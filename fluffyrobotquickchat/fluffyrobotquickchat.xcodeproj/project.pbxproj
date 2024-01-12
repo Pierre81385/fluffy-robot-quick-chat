@@ -12,6 +12,9 @@
 		BA90E1D32B51C5B300729479 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90E1D22B51C5B300729479 /* Item.swift */; };
 		BA90E1D52B51C5B400729479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA90E1D42B51C5B400729479 /* Assets.xcassets */; };
 		BA90E1D82B51C5B400729479 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA90E1D72B51C5B400729479 /* Preview Assets.xcassets */; };
+		BA90E1DF2B51C68800729479 /* UserRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90E1DE2B51C68800729479 /* UserRegistration.swift */; };
+		BA90E1E12B51C6A200729479 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90E1E02B51C6A200729479 /* UserLogin.swift */; };
+		BA90E1E32B51C74000729479 /* UserProfie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90E1E22B51C74000729479 /* UserProfie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +24,9 @@
 		BA90E1D22B51C5B300729479 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		BA90E1D42B51C5B400729479 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA90E1D72B51C5B400729479 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BA90E1DE2B51C68800729479 /* UserRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistration.swift; sourceTree = "<group>"; };
+		BA90E1E02B51C6A200729479 /* UserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
+		BA90E1E22B51C74000729479 /* UserProfie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +61,9 @@
 			children = (
 				BA90E1CE2B51C5B300729479 /* fluffyrobotquickchatApp.swift */,
 				BA90E1D02B51C5B300729479 /* ContentView.swift */,
+				BA90E1DE2B51C68800729479 /* UserRegistration.swift */,
+				BA90E1E22B51C74000729479 /* UserProfie.swift */,
+				BA90E1E02B51C6A200729479 /* UserLogin.swift */,
 				BA90E1D22B51C5B300729479 /* Item.swift */,
 				BA90E1D42B51C5B400729479 /* Assets.xcassets */,
 				BA90E1D62B51C5B400729479 /* Preview Content */,
@@ -141,8 +150,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA90E1D12B51C5B300729479 /* ContentView.swift in Sources */,
+				BA90E1E12B51C6A200729479 /* UserLogin.swift in Sources */,
 				BA90E1D32B51C5B300729479 /* Item.swift in Sources */,
+				BA90E1DF2B51C68800729479 /* UserRegistration.swift in Sources */,
 				BA90E1CF2B51C5B300729479 /* fluffyrobotquickchatApp.swift in Sources */,
+				BA90E1E32B51C74000729479 /* UserProfie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
