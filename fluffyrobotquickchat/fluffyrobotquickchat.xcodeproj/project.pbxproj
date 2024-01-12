@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA43DF8B2B51E13100D845AE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BA43DF8A2B51E13100D845AE /* FirebaseFirestore */; };
+		BA43DF8D2B51E4C500D845AE /* MyAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43DF8C2B51E4C500D845AE /* MyAppDelegate.swift */; };
 		BA90E1CF2B51C5B300729479 /* fluffyrobotquickchatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90E1CE2B51C5B300729479 /* fluffyrobotquickchatApp.swift */; };
 		BA90E1D12B51C5B300729479 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90E1D02B51C5B300729479 /* ContentView.swift */; };
 		BA90E1D32B51C5B300729479 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90E1D22B51C5B300729479 /* Item.swift */; };
@@ -15,9 +17,16 @@
 		BA90E1DF2B51C68800729479 /* UserRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90E1DE2B51C68800729479 /* UserRegistration.swift */; };
 		BA90E1E12B51C6A200729479 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90E1E02B51C6A200729479 /* UserLogin.swift */; };
 		BA90E1E32B51C74000729479 /* UserProfie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90E1E22B51C74000729479 /* UserProfie.swift */; };
+		BA90E1E62B51D94400729479 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = BA90E1E52B51D94400729479 /* FirebaseAnalytics */; };
+		BA90E1E82B51D94400729479 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = BA90E1E72B51D94400729479 /* FirebaseAnalyticsOnDeviceConversion */; };
+		BA90E1EA2B51D94400729479 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BA90E1E92B51D94400729479 /* FirebaseAnalyticsSwift */; };
+		BA90E1EC2B51D94400729479 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = BA90E1EB2B51D94400729479 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		BA90E1EE2B51D94400729479 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = BA90E1ED2B51D94400729479 /* FirebaseAppCheck */; };
+		BA90E1F02B51DCE800729479 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA90E1EF2B51DCE800729479 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA43DF8C2B51E4C500D845AE /* MyAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppDelegate.swift; sourceTree = "<group>"; };
 		BA90E1CB2B51C5B300729479 /* fluffyrobotquickchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fluffyrobotquickchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA90E1CE2B51C5B300729479 /* fluffyrobotquickchatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fluffyrobotquickchatApp.swift; sourceTree = "<group>"; };
 		BA90E1D02B51C5B300729479 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -27,6 +36,7 @@
 		BA90E1DE2B51C68800729479 /* UserRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistration.swift; sourceTree = "<group>"; };
 		BA90E1E02B51C6A200729479 /* UserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		BA90E1E22B51C74000729479 /* UserProfie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfie.swift; sourceTree = "<group>"; };
+		BA90E1EF2B51DCE800729479 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,17 +44,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA90E1EA2B51D94400729479 /* FirebaseAnalyticsSwift in Frameworks */,
+				BA90E1E62B51D94400729479 /* FirebaseAnalytics in Frameworks */,
+				BA90E1E82B51D94400729479 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				BA90E1EE2B51D94400729479 /* FirebaseAppCheck in Frameworks */,
+				BA90E1EC2B51D94400729479 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				BA43DF8B2B51E13100D845AE /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA43DF892B51E13100D845AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BA90E1C22B51C5B300729479 = {
 			isa = PBXGroup;
 			children = (
 				BA90E1CD2B51C5B300729479 /* fluffyrobotquickchat */,
 				BA90E1CC2B51C5B300729479 /* Products */,
+				BA43DF892B51E13100D845AE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,7 +83,9 @@
 		BA90E1CD2B51C5B300729479 /* fluffyrobotquickchat */ = {
 			isa = PBXGroup;
 			children = (
+				BA90E1EF2B51DCE800729479 /* GoogleService-Info.plist */,
 				BA90E1CE2B51C5B300729479 /* fluffyrobotquickchatApp.swift */,
+				BA43DF8C2B51E4C500D845AE /* MyAppDelegate.swift */,
 				BA90E1D02B51C5B300729479 /* ContentView.swift */,
 				BA90E1DE2B51C68800729479 /* UserRegistration.swift */,
 				BA90E1E22B51C74000729479 /* UserProfie.swift */,
@@ -95,6 +121,14 @@
 			dependencies = (
 			);
 			name = fluffyrobotquickchat;
+			packageProductDependencies = (
+				BA90E1E52B51D94400729479 /* FirebaseAnalytics */,
+				BA90E1E72B51D94400729479 /* FirebaseAnalyticsOnDeviceConversion */,
+				BA90E1E92B51D94400729479 /* FirebaseAnalyticsSwift */,
+				BA90E1EB2B51D94400729479 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				BA90E1ED2B51D94400729479 /* FirebaseAppCheck */,
+				BA43DF8A2B51E13100D845AE /* FirebaseFirestore */,
+			);
 			productName = fluffyrobotquickchat;
 			productReference = BA90E1CB2B51C5B300729479 /* fluffyrobotquickchat.app */;
 			productType = "com.apple.product-type.application";
@@ -123,6 +157,9 @@
 				Base,
 			);
 			mainGroup = BA90E1C22B51C5B300729479;
+			packageReferences = (
+				BA90E1E42B51D94400729479 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = BA90E1CC2B51C5B300729479 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,6 +176,7 @@
 			files = (
 				BA90E1D82B51C5B400729479 /* Preview Assets.xcassets in Resources */,
 				BA90E1D52B51C5B400729479 /* Assets.xcassets in Resources */,
+				BA90E1F02B51DCE800729479 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +190,7 @@
 				BA90E1D12B51C5B300729479 /* ContentView.swift in Sources */,
 				BA90E1E12B51C6A200729479 /* UserLogin.swift in Sources */,
 				BA90E1D32B51C5B300729479 /* Item.swift in Sources */,
+				BA43DF8D2B51E4C500D845AE /* MyAppDelegate.swift in Sources */,
 				BA90E1DF2B51C68800729479 /* UserRegistration.swift in Sources */,
 				BA90E1CF2B51C5B300729479 /* fluffyrobotquickchatApp.swift in Sources */,
 				BA90E1E32B51C74000729479 /* UserProfie.swift in Sources */,
@@ -360,6 +399,50 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BA90E1E42B51D94400729479 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.19.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BA43DF8A2B51E13100D845AE /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA90E1E42B51D94400729479 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		BA90E1E52B51D94400729479 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA90E1E42B51D94400729479 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		BA90E1E72B51D94400729479 /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA90E1E42B51D94400729479 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		BA90E1E92B51D94400729479 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA90E1E42B51D94400729479 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		BA90E1EB2B51D94400729479 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA90E1E42B51D94400729479 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		BA90E1ED2B51D94400729479 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA90E1E42B51D94400729479 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BA90E1C32B51C5B300729479 /* Project object */;
 }

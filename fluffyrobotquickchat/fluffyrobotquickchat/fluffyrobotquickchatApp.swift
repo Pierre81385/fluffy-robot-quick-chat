@@ -7,6 +7,9 @@
 
 import SwiftUI
 import SwiftData
+import FirebaseCore
+import FirebaseFirestore
+
 
 @main
 struct fluffyrobotquickchatApp: App {
@@ -22,7 +25,13 @@ struct fluffyrobotquickchatApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+       
+    @UIApplicationDelegateAdaptor(MyAppDelegate.self) var delegate
 
+    init() {
+        FirebaseApp.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

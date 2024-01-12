@@ -1,8 +1,23 @@
 import SwiftUI
+import FirebaseFirestore
 
 struct RegisterView: View {
     @State var email: String = "";
     @State var password: String = "";
+    
+    let db = Firestore.firestore()
+    
+    func createUser () async{
+        do {
+          try await db.collection("users").document().setData([
+            "email": email,
+            "password": password,
+          ])
+          print("Document successfully written!")
+        } catch {
+          print("Error writing document: \(error)")
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -19,7 +34,9 @@ struct RegisterView: View {
                         Text("Back")
                     })
                     Button(action: {
-                        print("submit")
+                        Task {
+                            await createUser()
+                        }
                     }, label: {
                         Text("Submit")
                         //function to create DB record of users
