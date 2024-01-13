@@ -15,34 +15,52 @@ struct UserLoginView: View {
     var body: some View {
 
         ZStack {
+            Color(Color.offWhite)
             VStack {
-                Button(action: {
-                    print("guest")
-                }, label: {
-                    Text("Continue as Guest")
-                })
-                Text("Or Login")
+                HStack {
+                    Text("LOGIN")
+                        .font(.largeTitle)
+                }
                 //email
                 TextField("email address", text: $email)
+                    .accentColor(.black)
+                    .padding()
+                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                    .autocorrectionDisabled()
                 //password
-                TextField("password", text: $password)
+                SecureField("password", text: $password)
+                    .accentColor(.black)
+                    .padding()
+                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                    .autocorrectionDisabled()
                 //buttons
                 HStack {
                     Button(action: {
-                        print("back")
+                        if (email == "" || password == ""){
+                            print("Login error: Form is incomplete.")
+                        } else {
+                            let user = FirestoreUser()
+                            
+                            Task {
+                                await user.createNewUser(email: email, password: password)
+                            }
+                        }
+                        
+                        
                     }, label: {
-                        Text("Back")
-                    })
-                    Button(action: {
-                        print("login")
-                    }, label: {
-                        Text("Login")
-                        //function to try user login
+                        Text("Submit")
+                        //function to create DB record of users
                         //function to move user to the next screen
-                    })
+                    }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
+                        .padding()
                 }
+                Divider().padding()
+                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Text("I'm a new user")
+                        .foregroundColor(.black)
+                })
             }
-        }
+        }.ignoresSafeArea()
     }
 }
 

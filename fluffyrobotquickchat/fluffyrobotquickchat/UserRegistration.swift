@@ -10,13 +10,29 @@ struct RegisterView: View {
     var body: some View {
         ZStack {
             Color(Color.offWhite)
+            
             VStack {
+                HStack {
+                    Text("REGISTRATION")
+                        .font(.largeTitle)
+                }
                 //email
                 TextField("email address", text: $email)
+                    .accentColor(.black)
                     .padding()
+                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                    .autocorrectionDisabled()
                 //password
-                TextField("password", text: $password)
+                SecureField("password", text: $password)
+                    .accentColor(.black)
                     .padding()
+                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                    .autocorrectionDisabled()
+                SecureField("verify password", text: $password)
+                    .accentColor(.black)
+                    .padding()
+                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                    .autocorrectionDisabled()
                 //buttons
                 HStack {
                     Button(action: {
@@ -39,7 +55,7 @@ struct RegisterView: View {
                         
                         
                     }, label: {
-                        Text("Register")
+                        Text("Submit")
                         //function to create DB record of users
                         //function to move user to the next screen
                     }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
