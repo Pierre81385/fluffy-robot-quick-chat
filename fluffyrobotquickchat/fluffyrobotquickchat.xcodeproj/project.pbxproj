@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		BA43DF8B2B51E13100D845AE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BA43DF8A2B51E13100D845AE /* FirebaseFirestore */; };
 		BA43DF8D2B51E4C500D845AE /* MyAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43DF8C2B51E4C500D845AE /* MyAppDelegate.swift */; };
+		BA43DF8F2B51ECDC00D845AE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43DF8E2B51ECDC00D845AE /* HomeView.swift */; };
+		BA43DF912B51F9E100D845AE /* Firestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43DF902B51F9E100D845AE /* Firestore.swift */; };
+		BA43DF932B51FBE600D845AE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43DF922B51FBE600D845AE /* User.swift */; };
+		BA43DF952B52617400D845AE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43DF942B52617400D845AE /* ColorExtension.swift */; };
+		BA43DF972B52619A00D845AE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43DF962B52619A00D845AE /* ViewExtension.swift */; };
+		BA43DF992B52638F00D845AE /* LinearGradientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43DF982B52638F00D845AE /* LinearGradientExtension.swift */; };
+		BA43DF9B2B52714A00D845AE /* NeumorphicStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43DF9A2B52714900D845AE /* NeumorphicStyle.swift */; };
 		BA90E1CF2B51C5B300729479 /* fluffyrobotquickchatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90E1CE2B51C5B300729479 /* fluffyrobotquickchatApp.swift */; };
 		BA90E1D12B51C5B300729479 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90E1D02B51C5B300729479 /* ContentView.swift */; };
 		BA90E1D32B51C5B300729479 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90E1D22B51C5B300729479 /* Item.swift */; };
@@ -27,6 +34,13 @@
 
 /* Begin PBXFileReference section */
 		BA43DF8C2B51E4C500D845AE /* MyAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppDelegate.swift; sourceTree = "<group>"; };
+		BA43DF8E2B51ECDC00D845AE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		BA43DF902B51F9E100D845AE /* Firestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firestore.swift; sourceTree = "<group>"; };
+		BA43DF922B51FBE600D845AE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BA43DF942B52617400D845AE /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		BA43DF962B52619A00D845AE /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		BA43DF982B52638F00D845AE /* LinearGradientExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearGradientExtension.swift; sourceTree = "<group>"; };
+		BA43DF9A2B52714900D845AE /* NeumorphicStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicStyle.swift; sourceTree = "<group>"; };
 		BA90E1CB2B51C5B300729479 /* fluffyrobotquickchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fluffyrobotquickchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA90E1CE2B51C5B300729479 /* fluffyrobotquickchatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fluffyrobotquickchatApp.swift; sourceTree = "<group>"; };
 		BA90E1D02B51C5B300729479 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +77,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BA43DF9C2B52717700D845AE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BA43DF942B52617400D845AE /* ColorExtension.swift */,
+				BA43DF8C2B51E4C500D845AE /* MyAppDelegate.swift */,
+				BA43DF9A2B52714900D845AE /* NeumorphicStyle.swift */,
+				BA43DF982B52638F00D845AE /* LinearGradientExtension.swift */,
+				BA43DF962B52619A00D845AE /* ViewExtension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		BA90E1C22B51C5B300729479 = {
 			isa = PBXGroup;
 			children = (
@@ -85,10 +111,13 @@
 			children = (
 				BA90E1EF2B51DCE800729479 /* GoogleService-Info.plist */,
 				BA90E1CE2B51C5B300729479 /* fluffyrobotquickchatApp.swift */,
-				BA43DF8C2B51E4C500D845AE /* MyAppDelegate.swift */,
 				BA90E1D02B51C5B300729479 /* ContentView.swift */,
+				BA43DF9C2B52717700D845AE /* Utils */,
+				BA43DF902B51F9E100D845AE /* Firestore.swift */,
+				BA43DF922B51FBE600D845AE /* User.swift */,
 				BA90E1DE2B51C68800729479 /* UserRegistration.swift */,
 				BA90E1E22B51C74000729479 /* UserProfie.swift */,
+				BA43DF8E2B51ECDC00D845AE /* HomeView.swift */,
 				BA90E1E02B51C6A200729479 /* UserLogin.swift */,
 				BA90E1D22B51C5B300729479 /* Item.swift */,
 				BA90E1D42B51C5B400729479 /* Assets.xcassets */,
@@ -189,10 +218,17 @@
 			files = (
 				BA90E1D12B51C5B300729479 /* ContentView.swift in Sources */,
 				BA90E1E12B51C6A200729479 /* UserLogin.swift in Sources */,
+				BA43DF8F2B51ECDC00D845AE /* HomeView.swift in Sources */,
 				BA90E1D32B51C5B300729479 /* Item.swift in Sources */,
 				BA43DF8D2B51E4C500D845AE /* MyAppDelegate.swift in Sources */,
+				BA43DF912B51F9E100D845AE /* Firestore.swift in Sources */,
+				BA43DF992B52638F00D845AE /* LinearGradientExtension.swift in Sources */,
+				BA43DF972B52619A00D845AE /* ViewExtension.swift in Sources */,
 				BA90E1DF2B51C68800729479 /* UserRegistration.swift in Sources */,
 				BA90E1CF2B51C5B300729479 /* fluffyrobotquickchatApp.swift in Sources */,
+				BA43DF932B51FBE600D845AE /* User.swift in Sources */,
+				BA43DF9B2B52714A00D845AE /* NeumorphicStyle.swift in Sources */,
+				BA43DF952B52617400D845AE /* ColorExtension.swift in Sources */,
 				BA90E1E32B51C74000729479 /* UserProfie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

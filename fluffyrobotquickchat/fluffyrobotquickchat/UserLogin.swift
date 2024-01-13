@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
-struct LoginView: View {
+struct UserLoginView: View {
     @State var email: String = "";
     @State var password: String = "";
     
     var body: some View {
+
         ZStack {
             VStack {
                 Button(action: {
@@ -32,9 +34,9 @@ struct LoginView: View {
                         Text("Back")
                     })
                     Button(action: {
-                        print("submit")
+                        print("login")
                     }, label: {
-                        Text("Submit")
+                        Text("Login")
                         //function to try user login
                         //function to move user to the next screen
                     })
@@ -42,4 +44,8 @@ struct LoginView: View {
             }
         }
     }
+}
+
+#Preview {
+    UserLoginView(email: "", password: "")
 }

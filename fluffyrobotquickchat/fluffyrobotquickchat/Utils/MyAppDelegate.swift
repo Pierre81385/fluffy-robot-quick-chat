@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+//  required for Firebase integration
 class MyAppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         print("MyAppDelegate didFinishLaunchingWithOptions called")
