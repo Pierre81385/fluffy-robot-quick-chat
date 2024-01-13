@@ -12,8 +12,7 @@ import SwiftData
 struct ContentView: View {
 
     var body: some View {
-        UserLoginView()
-        RegisterView()
+        DialView()
     }
 }
 
