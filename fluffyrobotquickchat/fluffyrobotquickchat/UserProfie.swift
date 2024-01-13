@@ -13,6 +13,7 @@ struct UserProfileView: View {
         ZStack {
             
         }
+            
     }
 }
 
