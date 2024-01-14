@@ -30,6 +30,8 @@
 		BA90E1EC2B51D94400729479 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = BA90E1EB2B51D94400729479 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		BA90E1EE2B51D94400729479 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = BA90E1ED2B51D94400729479 /* FirebaseAppCheck */; };
 		BA90E1F02B51DCE800729479 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA90E1EF2B51DCE800729479 /* GoogleService-Info.plist */; };
+		BADA8D762B535D0F0090C831 /* CircularGlowTileComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADA8D752B535D0F0090C831 /* CircularGlowTileComponent.swift */; };
+		BADA8D782B535DA80090C831 /* DialComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADA8D772B535DA80090C831 /* DialComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		BA90E1E02B51C6A200729479 /* UserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		BA90E1E22B51C74000729479 /* UserProfie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfie.swift; sourceTree = "<group>"; };
 		BA90E1EF2B51DCE800729479 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BADA8D752B535D0F0090C831 /* CircularGlowTileComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularGlowTileComponent.swift; sourceTree = "<group>"; };
+		BADA8D772B535DA80090C831 /* DialComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +85,10 @@
 			isa = PBXGroup;
 			children = (
 				BA43DF942B52617400D845AE /* ColorExtension.swift */,
-				BA43DF8C2B51E4C500D845AE /* MyAppDelegate.swift */,
 				BA43DF9A2B52714900D845AE /* NeumorphicStyle.swift */,
 				BA43DF982B52638F00D845AE /* LinearGradientExtension.swift */,
 				BA43DF962B52619A00D845AE /* ViewExtension.swift */,
+				BA43DF8C2B51E4C500D845AE /* MyAppDelegate.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -117,8 +121,9 @@
 				BA43DF922B51FBE600D845AE /* User.swift */,
 				BA90E1DE2B51C68800729479 /* UserRegistration.swift */,
 				BA90E1E22B51C74000729479 /* UserProfie.swift */,
-				BA43DF8E2B51ECDC00D845AE /* DialView.swift */,
+				BADA8D742B535CE70090C831 /* Dail */,
 				BA90E1E02B51C6A200729479 /* UserLogin.swift */,
+				BADA8D792B535DE30090C831 /* Neumorphic */,
 				BA90E1D22B51C5B300729479 /* Item.swift */,
 				BA90E1D42B51C5B400729479 /* Assets.xcassets */,
 				BA90E1D62B51C5B400729479 /* Preview Content */,
@@ -132,6 +137,23 @@
 				BA90E1D72B51C5B400729479 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BADA8D742B535CE70090C831 /* Dail */ = {
+			isa = PBXGroup;
+			children = (
+				BA43DF8E2B51ECDC00D845AE /* DialView.swift */,
+				BADA8D772B535DA80090C831 /* DialComponent.swift */,
+				BADA8D752B535D0F0090C831 /* CircularGlowTileComponent.swift */,
+			);
+			path = Dail;
+			sourceTree = "<group>";
+		};
+		BADA8D792B535DE30090C831 /* Neumorphic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Neumorphic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,12 +246,14 @@
 				BA43DF912B51F9E100D845AE /* Firestore.swift in Sources */,
 				BA43DF992B52638F00D845AE /* LinearGradientExtension.swift in Sources */,
 				BA43DF972B52619A00D845AE /* ViewExtension.swift in Sources */,
+				BADA8D762B535D0F0090C831 /* CircularGlowTileComponent.swift in Sources */,
 				BA90E1DF2B51C68800729479 /* UserRegistration.swift in Sources */,
 				BA90E1CF2B51C5B300729479 /* fluffyrobotquickchatApp.swift in Sources */,
 				BA43DF932B51FBE600D845AE /* User.swift in Sources */,
 				BA43DF9B2B52714A00D845AE /* NeumorphicStyle.swift in Sources */,
 				BA43DF952B52617400D845AE /* ColorExtension.swift in Sources */,
 				BA90E1E32B51C74000729479 /* UserProfie.swift in Sources */,
+				BADA8D782B535DA80090C831 /* DialComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
