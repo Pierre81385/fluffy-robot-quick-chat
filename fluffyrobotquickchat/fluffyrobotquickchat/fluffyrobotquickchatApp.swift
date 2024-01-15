@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 import FirebaseCore
 import FirebaseFirestore
-
+import FirebaseAuth
 
 @main
 struct fluffyrobotquickchatApp: App {

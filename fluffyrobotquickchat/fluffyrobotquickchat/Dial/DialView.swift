@@ -28,11 +28,9 @@ struct DialView: View {
             VStack {
                 Spacer()
                 HStack {
-                    if (val1 == 0.0) {Text("").NeumorphicStyle().padding()} else {Text("\(val1, specifier: "%.0f")").NeumorphicStyle().padding()}
-                    
-                    if (val2 == 0.0) {Text("").NeumorphicStyle().padding()} else {Text("\(val2, specifier: "%.0f")").NeumorphicStyle().padding()}
-                    
-                    if (val3 == 0.0) {Text("").NeumorphicStyle().padding()} else {Text("\(val3, specifier: "%.0f")").NeumorphicStyle().padding()}
+                    if (val1 == 0.0) {Text("").NeumorphicStyle()} else {Text("\(val1, specifier: "%.0f")").NeumorphicStyle()}
+                    if (val2 == 0.0) {Text("").NeumorphicStyle()} else {Text("\(val2, specifier: "%.0f")").NeumorphicStyle()}
+                    if (val3 == 0.0) {Text("").NeumorphicStyle()} else {Text("\(val3, specifier: "%.0f")").NeumorphicStyle()}
                 }
                 Spacer()
                 ZStack {
@@ -44,10 +42,10 @@ struct DialView: View {
                 Button(action: {
                     if (val1 == 0.0) {
                         val1 = dialValue.rounded()
-                        statusColor = .purple.opacity(0.8)
+                        
                     } else if (val2 == 0.0) {
                         val2 = dialValue.rounded()
-                        statusColor = .pink.opacity(0.8)
+                        
                     } else if (val3 == 0.0) {
                         val3 = dialValue.rounded()
                         unlock = true
