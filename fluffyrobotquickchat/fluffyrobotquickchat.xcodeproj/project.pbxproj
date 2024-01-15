@@ -45,6 +45,7 @@
 		BADA8D932B545A4C0090C831 /* ChatRoomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADA8D922B545A4C0090C831 /* ChatRoomsView.swift */; };
 		BADA8D952B54A70D0090C831 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADA8D942B54A70D0090C831 /* UserModel.swift */; };
 		BADA8D972B54B1E70090C831 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADA8D962B54B1E70090C831 /* ChatModel.swift */; };
+		BADA8D992B55184C0090C831 /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADA8D982B55184C0090C831 /* FirebaseAuth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		BADA8D922B545A4C0090C831 /* ChatRoomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomsView.swift; sourceTree = "<group>"; };
 		BADA8D942B54A70D0090C831 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		BADA8D962B54B1E70090C831 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		BADA8D982B55184C0090C831 /* FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			children = (
 				BA43DF902B51F9E100D845AE /* Firestore.swift */,
 				BA43DF942B52617400D845AE /* ColorExtension.swift */,
+				BADA8D982B55184C0090C831 /* FirebaseAuth.swift */,
 				BA43DF9A2B52714900D845AE /* NeumorphicStyle.swift */,
 				BA43DF982B52638F00D845AE /* LinearGradientExtension.swift */,
 				BA43DF962B52619A00D845AE /* ViewExtension.swift */,
@@ -305,6 +308,7 @@
 				BA43DF972B52619A00D845AE /* ViewExtension.swift in Sources */,
 				BADA8D762B535D0F0090C831 /* CircularGlowTileComponent.swift in Sources */,
 				BA90E1DF2B51C68800729479 /* UserRegistrationView.swift in Sources */,
+				BADA8D992B55184C0090C831 /* FirebaseAuth.swift in Sources */,
 				BADA8D932B545A4C0090C831 /* ChatRoomsView.swift in Sources */,
 				BA90E1CF2B51C5B300729479 /* fluffyrobotquickchatApp.swift in Sources */,
 				BA43DF9B2B52714A00D845AE /* NeumorphicStyle.swift in Sources */,

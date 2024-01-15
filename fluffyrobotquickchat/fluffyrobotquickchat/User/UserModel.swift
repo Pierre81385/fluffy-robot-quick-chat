@@ -11,7 +11,6 @@ import Firebase
 
 final class StoredUser: Codable {
     var email: String
-    var password: String
     var avatarImage: String
     var bio: String
     var friends: Array<StoredUser>
@@ -19,9 +18,8 @@ final class StoredUser: Codable {
     var favorites: Array<StoredChatroom>
     var documentId: String?
     
-    init(email: String, password: String, avatarImage: String, bio: String, friends: Array<StoredUser>, rooms: Array<StoredChatroom>, favorites: Array<StoredChatroom>) {
+    init(email: String, avatarImage: String, bio: String, friends: Array<StoredUser>, rooms: Array<StoredChatroom>, favorites: Array<StoredChatroom>) {
         self.email = email
-        self.password = password
         self.avatarImage = avatarImage
         self.bio = bio
         self.friends = friends
@@ -32,7 +30,6 @@ final class StoredUser: Codable {
     var dictionary : [String:Any] {
             return [
                     "email": email,
-                    "password": password,
                     "avatarImage": avatarImage,
                     "bio": bio,
                     "friends": friends,
@@ -45,7 +42,6 @@ final class StoredUser: Codable {
             documentId = snapshot.documentID
             let snapshotValue = snapshot.data()
             email = snapshotValue!["email"] as! String
-            password = snapshotValue!["password"] as! String
             avatarImage = snapshotValue!["avatarImage"] as! String
             bio = snapshotValue!["bio"] as! String
             friends = snapshotValue!["friends"] as! Array<StoredUser>

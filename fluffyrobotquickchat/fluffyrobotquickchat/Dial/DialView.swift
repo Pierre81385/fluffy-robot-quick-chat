@@ -33,6 +33,7 @@ struct DialView: View {
                     if (val3 == 0.0) {Text("").NeumorphicStyle()} else {Text("\(val3, specifier: "%.0f")").NeumorphicStyle()}
                 }
                 Spacer()
+                Text("Rotate the dial to enter your room code.")
                 ZStack {
                     Background(isPressed: false, shape: Circle()).frame(width: 300, height: 300)
                     GlowTile_Circular(ringColor: statusColor)

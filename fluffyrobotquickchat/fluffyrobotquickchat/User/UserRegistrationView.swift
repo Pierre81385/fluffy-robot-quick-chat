@@ -7,7 +7,7 @@ struct RegisterView: View {
     @State var email: String = "";
     @State var password: String = "";
     @State var verifyPassword: String = "";
-    @State var user: StoredUser = StoredUser(email: "", password: "", avatarImage: "", bio: "", friends: [], rooms: [], favorites: [])
+    @State var user: StoredUser = StoredUser(email: "", avatarImage: "", bio: "", friends: [], rooms: [], favorites: [])
     @State var path = UserProfileView()
     @State var status: FirestoreStatus = FirestoreStatus(success: false, code: 100, message: "")
         
@@ -55,7 +55,6 @@ struct RegisterView: View {
                                 print("Passwords don't match!")
                             } else {
                                 user.email = email
-                                user.password = password
                                 let firestore = FirestoreUser(user: $user, status: $status)
                                 
                                 Task {

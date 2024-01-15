@@ -7,11 +7,12 @@
 
 import SwiftUI
 import FirebaseFirestore
+import FirebaseAuth
 
 struct UserLoginView: View {
     @State var email: String = "";
     @State var password: String = "";
-    @State var user: StoredUser = StoredUser(email: "", password: "", avatarImage: "", bio: "", friends: [], rooms: [], favorites: [])
+    @State var user: StoredUser = StoredUser(email: "", avatarImage: "", bio: "", friends: [], rooms: [], favorites: [])
     @State var status: FirestoreStatus = FirestoreStatus(success: false, code: 100, message: "")
     
     var body: some View {
@@ -43,6 +44,7 @@ struct UserLoginView: View {
                         } else {
                             let firestore = FirestoreUser(user: $user, status: $status)
                             firestore.getUser()
+                            
                         }
                         
                         

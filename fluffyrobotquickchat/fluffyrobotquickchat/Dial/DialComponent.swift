@@ -56,9 +56,9 @@ struct Dial: View {
                                     }
                 
                                 )
-//            Circle()
-//                .stroke(.gray.opacity(0.1), style: StrokeStyle(lineWidth: self.indicatorLength, lineCap: .butt, lineJoin: .miter, dash: [4]))
-//                .frame(width: self.scale, height: self.scale, alignment: .center)
+            Circle()
+                .stroke(.gray.opacity(0.1), style: StrokeStyle(lineWidth: self.indicatorLength, lineCap: .butt, lineJoin: .miter, dash: [4]))
+                .frame(width: 255, height: 255, alignment: .center)
             Circle()
                 .trim(from: 0.0, to: self.value)
                 .stroke(.white, style: StrokeStyle(lineWidth: self.indicatorLength, lineCap: .butt, lineJoin: .miter, dash: [4]))

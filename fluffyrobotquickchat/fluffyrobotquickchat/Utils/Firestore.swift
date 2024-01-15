@@ -28,7 +28,6 @@ struct FirestoreUser {
         do {
             try await db.collection("users").document(user.email).setData([
             "email": user.email,
-            "password": user.password,
           ])
             status.success = true
             status.code = 200
