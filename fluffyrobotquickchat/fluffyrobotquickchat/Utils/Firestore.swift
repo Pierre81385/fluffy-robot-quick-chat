@@ -64,17 +64,21 @@ struct FirestoreChat {
     
     let db = Firestore.firestore()
     
-     func createNewChatRoom (email: String, roomName: String) async {
+     func createNewChatRoom (email: String) async {
          let id = db.collection("chatRooms").document().documentID
         
-        do {
+         do {
             try await db.collection("chatRooms").document(id).setData([
             "createdBy": email,
-            "roomName": roomName,
+            "roomName": room.roomName,
+            "isPrivate": room.isPrivate,
+            "users": room.users,
+            "messages": room.messages
           ])
+             try await db.collection("users").document(email).updateData(["rooms": FieldValue.arrayUnion([id])])
             status.success = true
             status.code = 200
-            status.message = "Chatroom \(roomName) created!"
+            status.message = "Chatroom \(room.roomName) created!"
         } catch {
             status.success = false
             status.code = 500

@@ -7,7 +7,7 @@ struct RegisterView: View {
     @State var email: String = "";
     @State var password: String = "";
     @State var verifyPassword: String = "";
-    @State var user: StoredUser = StoredUser(email: "", password: "")
+    @State var user: StoredUser = StoredUser(email: "", password: "", avatarImage: "", bio: "", friends: [], rooms: [], favorites: [])
     @State var path = UserProfileView()
     @State var status: FirestoreStatus = FirestoreStatus(success: false, code: 100, message: "")
         

@@ -9,7 +9,7 @@ import SwiftUI
 //a view to show a card with the user profile on it
 
 struct UserProfileView: View {
-    @State var user: StoredUser = StoredUser(email: "pjb.den@gmail.com", password: "")
+    @State var user: StoredUser = StoredUser(email: "", password: "", avatarImage: "", bio: "", friends: [], rooms: [], favorites: [])
     @State var status: FirestoreStatus = FirestoreStatus(success: false, code: 100, message: "")
     
     var body: some View {
