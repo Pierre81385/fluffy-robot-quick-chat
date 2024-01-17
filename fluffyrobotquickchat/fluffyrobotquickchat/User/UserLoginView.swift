@@ -12,59 +12,74 @@ import FirebaseAuth
 struct UserLoginView: View {
     @State var email: String = "";
     @State var password: String = "";
-    @State var user: StoredUser = StoredUser(email: "", avatarImage: "", bio: "", friends: [], rooms: [], favorites: [])
-    @State var status: FirestoreStatus = FirestoreStatus(success: false, code: 100, message: "")
+    @State var status: FirebaseStatus = FirebaseStatus(success: false, code: 100, message: "")
+    @State var showDial: Bool = false
+    @Binding var user: User?
+    @Binding var authComplete: Bool
     
     var body: some View {
-
-        ZStack {
-            Color(Color.offWhite)
-            VStack {
-                HStack {
-                    Text("LOGIN")
-                        .font(.largeTitle)
-                }
-                //email
-                TextField("email address", text: $email)
-                    .accentColor(.black)
-                    .padding()
-                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                    .autocorrectionDisabled()
-                //password
-                SecureField("password", text: $password)
-                    .accentColor(.black)
-                    .padding()
-                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                    .autocorrectionDisabled()
-                //buttons
-                HStack {
-                    Button(action: {
-                        if (email == "" || password == ""){
-                            print("Login error: Form is incomplete.")
-                        } else {
-                            let firestore = FirestoreUser(user: $user, status: $status)
-                            firestore.getUser()
-                            
-                        }
-                        
-                        
-                    }, label: {
-                        Text("Submit")
-                        //function to create DB record of users
-                        //function to move user to the next screen
-                    }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
+        NavigationStack {
+            ZStack {
+                Color(Color.offWhite)
+                VStack {
+                    HStack {
+                        Text("LOGIN")
+                            .font(.largeTitle)
+                    }
+                    //email
+                    TextField("email address", text: $email)
+                        .accentColor(.black)
                         .padding()
+                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                        .autocorrectionDisabled(true)                    //password
+                    SecureField("password", text: $password)
+                        .accentColor(.black)
+                        .padding()
+                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                        .autocorrectionDisabled(true)
+                    //buttons
+                    
+                    HStack {
+                        Button(action: {
+                            showDial = true
+                        }, label: {
+                            Text("Enter Code")
+                        })
+                        .sheet(isPresented: $showDial, content: {
+                            DialView()
+                        }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
+                            .padding()
+                        Button(action: {
+                            if (email == "" || password == ""){
+                                status.success = false
+                                status.code = 300
+                                status.message = "Email and password is required to login!"
+                            } else {
+                                let auth = FireAuth(authStatus: $status)
+                                auth.SignInWithEmailAndPassword(email: email, password: password)
+                                user = auth.GetCurrentUser()
+                            }
+                            if (status.success == true){
+                                authComplete = true
+                            }
+                        }, label: {
+                            Text("Submit")
+                        }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
+                            .padding()
+                    }
+                    if (status.code != 100){
+                        Text(String(describing: status.code))
+                        Text(status.message)
+                    }
+                    Divider().padding()
+                    NavigationLink(destination: {UserRegisterView()}, label: {Text("I'm a new user!").foregroundColor(.black)})
                 }
-                Divider().padding()
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                    Text("I'm a new user")
-                        .foregroundColor(.black)
-                })
-            }
-        }.ignoresSafeArea()
+            }.ignoresSafeArea()
+        }.accentColor(.black)
+
     }
 }
 
 #Preview {
-    UserLoginView(email: "", password: "")
+    AuthSwitcher()
 }

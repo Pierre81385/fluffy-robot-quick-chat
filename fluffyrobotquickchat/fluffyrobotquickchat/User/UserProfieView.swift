@@ -6,30 +6,29 @@
 //
 
 import SwiftUI
-//a view to show a card with the user profile on it
+import FirebaseAuth
 
 struct UserProfileView: View {
-    @State var user: StoredUser = StoredUser(email: "", avatarImage: "", bio: "", friends: [], rooms: [], favorites: [])
-    @State var status: FirestoreStatus = FirestoreStatus(success: false, code: 100, message: "")
+    var user: User?
+    @State var newRoom: Bool = false
     
     var body: some View {
         ZStack {
-            if (status.success) {
-                VStack {
-                    Text(status.message)
-                    Text(user.email)
-                }
-            } else {
-                VStack {
-                    Text("ERROR")
-                    Text(status.message)
-                }
+            Color(Color.offWhite)
+            VStack {
+                Text("User Profile")
+                //Text(user!.uid)
+                Button(action: {
+                    newRoom = true
+                }, label: {
+                    Text("+ Chatroom")
+                })
+                .sheet(isPresented: $newRoom, content: {
+                    CreateChatRoomView()
+                }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
+                    .padding()
             }
-        }.onAppear {
-            let firestore = FirestoreUser(user: $user, status: $status)
-            //firestore.getUser()
-        }
-            
+        }.ignoresSafeArea()
     }
 }
 

@@ -12,11 +12,10 @@ import SwiftData
 struct ContentView: View {
 
     var body: some View {
-        DialView()
+        AuthSwitcher()
     }
 }
 
 #Preview {
-    ContentView()
-        //.modelContainer(for: Item.self, inMemory: true)
+    AuthSwitcher()
 }

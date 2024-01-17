@@ -3,20 +3,20 @@ import FirebaseFirestore
 
 
 
-struct RegisterView: View {
+struct UserRegisterView: View {
     @State var email: String = "";
     @State var password: String = "";
     @State var verifyPassword: String = "";
     @State var user: StoredUser = StoredUser(email: "", avatarImage: "", bio: "", friends: [], rooms: [], favorites: [])
-    @State var path = UserProfileView()
-    @State var status: FirestoreStatus = FirestoreStatus(success: false, code: 100, message: "")
-        
+    @State var status: FirebaseStatus = FirebaseStatus(success: false, code: 100, message: "")
+
     var body: some View {
+        
             ZStack {
                 Color(Color.offWhite)
                 
                 VStack {
-
+                    
                     HStack {
                         Text("REGISTER")
                             .font(.largeTitle)
@@ -39,20 +39,15 @@ struct RegisterView: View {
                         .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                         .autocorrectionDisabled()
                     //buttons
-                    HStack {
-                        Button(action: {
-                            print("back")
-                        }, label: {
-                            Text("Back")
-                        })
-                        .buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
-                        .padding()
-                        
                         Button(action: {
                             if (email == "" || password == ""){
-                                print("Register error: Form is incomplete.")
+                                status.success = false
+                                status.code = 500
+                                status.message = "Error: Registration form is incomplete."
                             } else if (password != verifyPassword){
-                                print("Passwords don't match!")
+                                status.success = false
+                                status.code = 500
+                                status.message = "Error: Passwords must match!."
                             } else {
                                 user.email = email
                                 let firestore = FirestoreUser(user: $user, status: $status)
@@ -60,26 +55,31 @@ struct RegisterView: View {
                                 Task {
                                     await firestore.createNewUser()
                                 }
+                                
+                                let auth = FireAuth(authStatus: $status)
+                                auth.CreateUser(email: email, password: password)
+                                //navigate to UserProfileView()
                             }
                         }, label: {
                             Text("Submit")
                         }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
                             .padding()
+                
+                    if (status.code != 100){
+                        Text("Error \(status.code)")
+                        Text(status.message)
+
                     }
-                    if (status.code == 100) {
-                        EmptyView()
-                    } else if (status.code == 500){
-                        ZStack {
-                            Text("ERROR")
-                            Text(status.message)
-                        }
-                    }
+                    
                     
                 }
             }.ignoresSafeArea()
         }
-}
+            
+        
+    }
 
-#Preview {
-    RegisterView()
-}
+
+//#Preview {
+//    UserRegisterView()
+//}

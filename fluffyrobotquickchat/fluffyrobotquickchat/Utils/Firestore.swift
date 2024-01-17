@@ -10,7 +10,7 @@ import FirebaseFirestore
 import FirebaseAuth
 import SwiftUI
 
-struct FirestoreStatus {
+struct FirebaseStatus {
     var success: Bool
     var code: Int
     var message: String
@@ -19,15 +19,20 @@ struct FirestoreStatus {
 struct FirestoreUser {
     
     @Binding var user: StoredUser
-    @Binding var status: FirestoreStatus
+    @Binding var status: FirebaseStatus
    
     let db = Firestore.firestore()
     
     func createNewUser () async {
-        
+        //StoredUser(email: "", avatarImage: "", bio: "", friends: [], rooms: [], favorites: [])
         do {
             try await db.collection("users").document(user.email).setData([
             "email": user.email,
+            "avatarImage": user.avatarImage,
+            "bio": user.bio,
+            "friends": user.friends,
+            "rooms": user.rooms,
+            "favorites": user.favorites
           ])
             status.success = true
             status.code = 200
@@ -59,22 +64,24 @@ struct FirestoreUser {
 struct FirestoreChat {
     
     @Binding var room: StoredChatroom
-    @Binding var status: FirestoreStatus
+    @Binding var status: FirebaseStatus
     
     let db = Firestore.firestore()
     
-     func createNewChatRoom (email: String) async {
+     func createNewChatRoom () async {
          let id = db.collection("chatRooms").document().documentID
         
          do {
             try await db.collection("chatRooms").document(id).setData([
-            "createdBy": email,
+            "createdBy": room.createedBy,
             "roomName": room.roomName,
+            "roomDescription": room.roomDescription,
             "isPrivate": room.isPrivate,
+            "code": room.code,
             "users": room.users,
             "messages": room.messages
           ])
-             try await db.collection("users").document(email).updateData(["rooms": FieldValue.arrayUnion([id])])
+             try await db.collection("users").document(room.createedBy).updateData(["rooms": FieldValue.arrayUnion([id])])
             status.success = true
             status.code = 200
             status.message = "Chatroom \(room.roomName) created!"

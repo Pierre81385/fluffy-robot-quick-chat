@@ -68,7 +68,7 @@ struct DialView: View {
                         }
                     }
                 }, label: {
-                    if (unlock) {Text("Unlock").frame(width: 100)} else { Text("Set").frame(width: 100)}
+                    if (unlock) {Text("Unlock").foregroundColor(.green).frame(width: 100)} else { Text("Set").frame(width: 100)}
                 }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
                     .padding()
                 Spacer()

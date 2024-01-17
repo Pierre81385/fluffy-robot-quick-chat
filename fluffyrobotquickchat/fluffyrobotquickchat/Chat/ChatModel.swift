@@ -56,15 +56,19 @@ final class StoredMessage: Codable {
 final class StoredChatroom: Codable {
     var createedBy: String
     var roomName: String
+    var roomDescription: String
     var isPrivate: Bool
+    var code: Int
     var users: Array<StoredUser>
     var messages: Array<StoredMessage>
     var documentId: String?
     
-    init(createdBy: String, roomName: String, isPrivate: Bool, users: Array<StoredUser>, messages: Array<StoredMessage>) {
+    init(createdBy: String, roomName: String, roomDescription: String, isPrivate: Bool, code: Int, users: Array<StoredUser>, messages: Array<StoredMessage>) {
         self.createedBy = createdBy
         self.roomName = roomName
+        self.roomDescription = roomDescription
         self.isPrivate = isPrivate
+        self.code = code
         self.users = users
         self.messages = messages
     }
@@ -73,7 +77,9 @@ final class StoredChatroom: Codable {
             return [
                     "createdBy": createedBy,
                     "roomName": roomName,
+                    "roomDescription": roomDescription,
                     "isPrivate": isPrivate,
+                    "code": code,
                     "users": users,
                     "messages": messages,
             ]
@@ -84,7 +90,9 @@ final class StoredChatroom: Codable {
         let snapshotValue = snapshot.data()
         createedBy = snapshotValue!["createedBy"] as! String
         roomName = snapshotValue!["roomName"] as! String
+        roomDescription = snapshotValue!["roomDescription"] as! String
         isPrivate = snapshotValue!["isPrivate"] as! Bool
+        code = snapshotValue!["code"] as! Int
         users = snapshotValue!["users"] as! Array<StoredUser>
         messages = snapshotValue!["messages"] as! Array<StoredMessage>
         }
