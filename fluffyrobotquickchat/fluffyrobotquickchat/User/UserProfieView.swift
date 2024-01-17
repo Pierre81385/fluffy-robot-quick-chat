@@ -16,22 +16,21 @@ struct UserProfileView: View {
         ZStack {
             Color(Color.offWhite)
             VStack {
+                //avatarURL
                 Text("User Profile")
                 //Text(user!.uid)
-                Button(action: {
-                    newRoom = true
-                }, label: {
-                    Text("+ Chatroom")
-                })
-                .sheet(isPresented: $newRoom, content: {
-                    CreateChatRoomView()
-                }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
-                    .padding()
+                //display name
+                //email
+                //phone number
+                
+                
             }
         }.ignoresSafeArea()
     }
 }
 
-#Preview {
-    UserProfileView()
+struct UserProfileView_Preview: PreviewProvider {
+    static var previews: some View {
+        UserProfileView()
+  }
 }

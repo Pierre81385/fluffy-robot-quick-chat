@@ -13,31 +13,28 @@ struct CreateChatRoomView: View {
     @State var status: FirebaseStatus = FirebaseStatus(success: false, code: 100, message: "")
     
     var body: some View {
-        ZStack {
-            Color(Color.offWhite)
-            VStack {
-                TextField("Room Name", text: $room.roomName)
-                    .accentColor(.black)
-                    .padding()
-                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                    .autocorrectionDisabled(true)
-                TextField("Description (optional)", text: $room.roomDescription)
-                    .lineLimit(10)
-                    .accentColor(.black)
-                    .padding()
-                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                    .autocorrectionDisabled(true)
-                Spacer()
-                Button(action: {
-                    let firestore = FirestoreChat(room: $room, status: $status)
-                                Task {
-                                    await firestore.createNewChatRoom()
-                                }
-                }, label: {
-                    Text("Create Room")
-                }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10))).padding()
-            }.padding()
-        }.ignoresSafeArea()
+        
+        VStack {
+            TextField("Room Name", text: $room.roomName)
+                .accentColor(.black)
+                .padding()
+                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                .autocorrectionDisabled(true)
+            TextField("Description (optional)", text: $room.roomDescription)
+                .lineLimit(10)
+                .accentColor(.black)
+                .padding()
+                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                .autocorrectionDisabled(true)
+            Button(action: {
+                let firestore = FirestoreChat(room: $room, status: $status)
+                Task {
+                    await firestore.createNewChatRoom()
+                }
+            }, label: {
+                Text("Create Room")
+            }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10))).padding()
+        }.frame(width: 300 , height: 250).padding()
     }
 }
 

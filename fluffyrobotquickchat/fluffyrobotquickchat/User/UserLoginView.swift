@@ -14,8 +14,7 @@ struct UserLoginView: View {
     @State var password: String = "";
     @State var status: FirebaseStatus = FirebaseStatus(success: false, code: 100, message: "")
     @State var showDial: Bool = false
-    @Binding var user: User?
-    @Binding var authComplete: Bool
+    @State var user: User?
     
     var body: some View {
         NavigationStack {
@@ -57,15 +56,14 @@ struct UserLoginView: View {
                             } else {
                                 let auth = FireAuth(authStatus: $status)
                                 auth.SignInWithEmailAndPassword(email: email, password: password)
-                                user = auth.GetCurrentUser()
                             }
-                            if (status.success == true){
-                                authComplete = true
-                            }
+                            
                         }, label: {
                             Text("Submit")
                         }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
                             .padding()
+                            .navigationDestination(isPresented: $status.success, destination: {UserProfileView(user: user)})
+
                     }
                     if (status.code != 100){
                         Text(String(describing: status.code))
@@ -76,10 +74,11 @@ struct UserLoginView: View {
                 }
             }.ignoresSafeArea()
         }.accentColor(.black)
+            
 
     }
 }
 
 #Preview {
-    AuthSwitcher()
+    UserLoginView()
 }

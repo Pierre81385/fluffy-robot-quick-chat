@@ -1,5 +1,6 @@
 import SwiftUI
 import FirebaseFirestore
+import FirebaseAuth
 
 
 
@@ -7,8 +8,8 @@ struct UserRegisterView: View {
     @State var email: String = "";
     @State var password: String = "";
     @State var verifyPassword: String = "";
-    @State var user: StoredUser = StoredUser(email: "", avatarImage: "", bio: "", friends: [], rooms: [], favorites: [])
     @State var status: FirebaseStatus = FirebaseStatus(success: false, code: 100, message: "")
+    @State var user: User?
 
     var body: some View {
         
@@ -48,22 +49,15 @@ struct UserRegisterView: View {
                                 status.success = false
                                 status.code = 500
                                 status.message = "Error: Passwords must match!."
-                            } else {
-                                user.email = email
-                                let firestore = FirestoreUser(user: $user, status: $status)
-                                
-                                Task {
-                                    await firestore.createNewUser()
-                                }
-                                
+                            } else { 
                                 let auth = FireAuth(authStatus: $status)
                                 auth.CreateUser(email: email, password: password)
-                                //navigate to UserProfileView()
                             }
                         }, label: {
                             Text("Submit")
                         }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
                             .padding()
+                            .navigationDestination(isPresented: $status.success, destination: {UserProfileView(user: user)})
                 
                     if (status.code != 100){
                         Text("Error \(status.code)")
@@ -80,6 +74,6 @@ struct UserRegisterView: View {
     }
 
 
-//#Preview {
-//    UserRegisterView()
-//}
+#Preview {
+    UserRegisterView()
+}

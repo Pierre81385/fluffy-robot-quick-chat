@@ -12,10 +12,10 @@ import SwiftData
 struct ContentView: View {
 
     var body: some View {
-        AuthSwitcher()
+        UserLoginView()
     }
 }
 
 #Preview {
-    AuthSwitcher()
+    UserLoginView()
 }
