@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import FirebaseFirestore
+import FirebaseAuth
 import Firebase
 
 //  firebase.firestore.FieldValue.serverTimestamp() for Timestamp
@@ -59,11 +60,11 @@ final class StoredChatroom: Codable {
     var roomDescription: String
     var isPrivate: Bool
     var code: Int
-    var users: Array<StoredUser>
+    var users: Array<String>
     var messages: Array<StoredMessage>
     var documentId: String?
     
-    init(createdBy: String, roomName: String, roomDescription: String, isPrivate: Bool, code: Int, users: Array<StoredUser>, messages: Array<StoredMessage>) {
+    init(createdBy: String, roomName: String, roomDescription: String, isPrivate: Bool, code: Int, users: Array<String>, messages: Array<StoredMessage>) {
         self.createedBy = createdBy
         self.roomName = roomName
         self.roomDescription = roomDescription
@@ -93,7 +94,7 @@ final class StoredChatroom: Codable {
         roomDescription = snapshotValue!["roomDescription"] as! String
         isPrivate = snapshotValue!["isPrivate"] as! Bool
         code = snapshotValue!["code"] as! Int
-        users = snapshotValue!["users"] as! Array<StoredUser>
+        users = snapshotValue!["users"] as! Array<String>
         messages = snapshotValue!["messages"] as! Array<StoredMessage>
         }
 

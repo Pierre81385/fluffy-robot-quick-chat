@@ -16,14 +16,12 @@ struct UserProfileView: View {
         ZStack {
             Color(Color.offWhite)
             VStack {
-                //avatarURL
-                Text("User Profile")
-                //Text(user!.uid)
-                //display name
-                //email
-                //phone number
-                
-                
+                Button(action: {
+                    
+                }, label: {
+                    Text("+ Chatroom")
+                }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
+                    .padding()
             }
         }.ignoresSafeArea()
     }

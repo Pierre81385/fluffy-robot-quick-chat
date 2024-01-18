@@ -7,6 +7,7 @@ import FirebaseAuth
 struct UserRegisterView: View {
     @State var email: String = "";
     @State var password: String = "";
+    @State var username: String = "";
     @State var verifyPassword: String = "";
     @State var status: FirebaseStatus = FirebaseStatus(success: false, code: 100, message: "")
     @State var user: User?
@@ -22,6 +23,11 @@ struct UserRegisterView: View {
                         Text("REGISTER")
                             .font(.largeTitle)
                     }
+                    TextField("username", text: $username)
+                        .accentColor(.black)
+                        .padding()
+                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                        .autocorrectionDisabled()
                     //email
                     TextField("email address", text: $email)
                         .accentColor(.black)
@@ -41,7 +47,7 @@ struct UserRegisterView: View {
                         .autocorrectionDisabled()
                     //buttons
                         Button(action: {
-                            if (email == "" || password == ""){
+                            if (email == "" || password == "" || username == ""){
                                 status.success = false
                                 status.code = 500
                                 status.message = "Error: Registration form is incomplete."
@@ -51,7 +57,7 @@ struct UserRegisterView: View {
                                 status.message = "Error: Passwords must match!."
                             } else { 
                                 let auth = FireAuth(authStatus: $status)
-                                auth.CreateUser(email: email, password: password)
+                                auth.CreateUser(username: username, email: email, password: password)
                             }
                         }, label: {
                             Text("Submit")

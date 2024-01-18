@@ -41,7 +41,7 @@
 		BADA8D8A2B54587E0090C831 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = BADA8D892B54587E0090C831 /* FirebaseAuthCombine-Community */; };
 		BADA8D8C2B54587E0090C831 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = BADA8D8B2B54587E0090C831 /* FirebaseCrashlytics */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BADA8D8E2B54587E0090C831 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = BADA8D8D2B54587E0090C831 /* FirebaseDatabase */; };
-		BADA8D912B545A3E0090C831 /* ChatRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADA8D902B545A3E0090C831 /* ChatRoomView.swift */; };
+		BADA8D912B545A3E0090C831 /* AddChatRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADA8D902B545A3E0090C831 /* AddChatRoomView.swift */; };
 		BADA8D932B545A4C0090C831 /* ChatRoomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADA8D922B545A4C0090C831 /* ChatRoomsView.swift */; };
 		BADA8D952B54A70D0090C831 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADA8D942B54A70D0090C831 /* UserModel.swift */; };
 		BADA8D972B54B1E70090C831 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADA8D962B54B1E70090C831 /* ChatModel.swift */; };
@@ -68,7 +68,7 @@
 		BA90E1EF2B51DCE800729479 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BADA8D752B535D0F0090C831 /* CircularGlowTileComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularGlowTileComponent.swift; sourceTree = "<group>"; };
 		BADA8D772B535DA80090C831 /* DialComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialComponent.swift; sourceTree = "<group>"; };
-		BADA8D902B545A3E0090C831 /* ChatRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomView.swift; sourceTree = "<group>"; };
+		BADA8D902B545A3E0090C831 /* AddChatRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatRoomView.swift; sourceTree = "<group>"; };
 		BADA8D922B545A4C0090C831 /* ChatRoomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomsView.swift; sourceTree = "<group>"; };
 		BADA8D942B54A70D0090C831 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		BADA8D962B54B1E70090C831 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
@@ -113,9 +113,9 @@
 			isa = PBXGroup;
 			children = (
 				BA43DF902B51F9E100D845AE /* Firestore.swift */,
+				BADA8D982B55184C0090C831 /* FirebaseAuth.swift */,
 				BA43DF942B52617400D845AE /* ColorExtension.swift */,
 				BA43DF9A2B52714900D845AE /* NeumorphicStyle.swift */,
-				BADA8D982B55184C0090C831 /* FirebaseAuth.swift */,
 				BA43DF982B52638F00D845AE /* LinearGradientExtension.swift */,
 				BA43DF962B52619A00D845AE /* ViewExtension.swift */,
 				BA43DF8C2B51E4C500D845AE /* MyAppDelegate.swift */,
@@ -197,7 +197,7 @@
 		BADA8D8F2B545A1E0090C831 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				BADA8D902B545A3E0090C831 /* ChatRoomView.swift */,
+				BADA8D902B545A3E0090C831 /* AddChatRoomView.swift */,
 				BADA8D962B54B1E70090C831 /* ChatModel.swift */,
 				BADA8D922B545A4C0090C831 /* ChatRoomsView.swift */,
 			);
@@ -303,7 +303,7 @@
 				BA90E1D32B51C5B300729479 /* Item.swift in Sources */,
 				BA43DF8D2B51E4C500D845AE /* MyAppDelegate.swift in Sources */,
 				BA43DF912B51F9E100D845AE /* Firestore.swift in Sources */,
-				BADA8D912B545A3E0090C831 /* ChatRoomView.swift in Sources */,
+				BADA8D912B545A3E0090C831 /* AddChatRoomView.swift in Sources */,
 				BA43DF992B52638F00D845AE /* LinearGradientExtension.swift in Sources */,
 				BA43DF972B52619A00D845AE /* ViewExtension.swift in Sources */,
 				BADA8D762B535D0F0090C831 /* CircularGlowTileComponent.swift in Sources */,

@@ -16,50 +16,7 @@ struct FirebaseStatus {
     var message: String
 }
 
-struct FirestoreUser {
-    
-    @Binding var user: StoredUser
-    @Binding var status: FirebaseStatus
-   
-    let db = Firestore.firestore()
-    
-    func createNewUser () async {
-        //StoredUser(email: "", avatarImage: "", bio: "", friends: [], rooms: [], favorites: [])
-        do {
-            try await db.collection("users").document(user.email).setData([
-            "email": user.email,
-            "avatarImage": user.avatarImage,
-            "bio": user.bio,
-            "friends": user.friends,
-            "rooms": user.rooms,
-            "favorites": user.favorites
-          ])
-            status.success = true
-            status.code = 200
-            status.message = "New User document successfully written!"
-        } catch {
-            status.success = false
-            status.code = 500
-            status.message = "Error writing User document: \(error)"
-        }
-    }
-    
-    func getUser () {
-        let docRef = db.collection("users").document(user.email)
-         docRef.getDocument { (document, error) in
-                if let document = document, document.exists {
-                    user = StoredUser(snapshot: document)
-                    status.success = true
-                    status.code = 200
-                    status.message = "Found user: \(user.email)"
-                } else {
-                    status.success = false
-                    status.code = 500
-                    status.message = "Error: \(String(describing: error))"
-                }
-            }
-    }
-}
+
 
 struct FirestoreChat {
     
