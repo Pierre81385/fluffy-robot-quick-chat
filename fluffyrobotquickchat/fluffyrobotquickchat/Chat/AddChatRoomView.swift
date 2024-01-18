@@ -12,7 +12,7 @@ import Combine
 
 
 struct AddChatRoomView: View {
-    @State var room: StoredChatroom = StoredChatroom(createdBy: "pjb.den@gmail.com", roomName: "", roomDescription: "", isPrivate: false, code: 0, users: [], messages: [])
+    @State var room: StoredChatroom = StoredChatroom(createdBy: "pjb.den@gmail.com", roomName: "", roomDescription: "", isPrivate: true, code: 0, users: [], messages: [])
     @State var status: FirebaseStatus = FirebaseStatus(success: false, code: 100, message: "")
     @State var dig1: String = "5"
     @State var dig2: String = "5"
@@ -49,7 +49,8 @@ struct AddChatRoomView: View {
                     Toggle(isOn: $room.isPrivate) {
                         Text("Private?")
                     }.padding()
-                if(!room.isPrivate) {
+                    .tint(.black)
+                if(room.isPrivate) {
                     ZStack {
                         VStack {
                             Text("SELECT ROOM CODE")

@@ -17,11 +17,13 @@ struct UserProfileView: View {
             Color(Color.offWhite)
             VStack {
                 Button(action: {
-                    
+                    newRoom = true
                 }, label: {
                     Text("+ Chatroom")
                 }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
                     .padding()
+                    .navigationDestination(isPresented: $newRoom, destination: {AddChatRoomView()})
+                
             }
         }.ignoresSafeArea()
     }
