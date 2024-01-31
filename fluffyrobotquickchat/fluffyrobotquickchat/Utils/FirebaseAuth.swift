@@ -10,11 +10,17 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
 
+struct FireAuthStatus {
+    var success: Bool
+    var code: Int
+    var message: String
+}
+
 struct FireAuth {
-    @Binding var authStatus: FirebaseStatus
+    @Binding var authStatus: FireAuthStatus
     
     func CreateUser(username: String, email: String, password: String) {
-         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+          Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if error != nil {
                 authStatus.success = false
                 authStatus.code = 500

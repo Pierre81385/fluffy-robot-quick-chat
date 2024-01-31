@@ -7,30 +7,30 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseFirestore
 
 struct UserProfileView: View {
-    var user: User?
-    @State var newRoom: Bool = false
     
     var body: some View {
-        ZStack {
-            Color(Color.offWhite)
-            VStack {
-                Button(action: {
-                    newRoom = true
-                }, label: {
-                    Text("+ Chatroom")
-                }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
-                    .padding()
-                    .navigationDestination(isPresented: $newRoom, destination: {AddChatRoomView()})
+        NavigationStack{
+            ZStack {
+                Color(Color.offWhite)
                 
-            }
-        }.ignoresSafeArea()
+                VStack {
+                    
+                        
+                        
+                    
+                    
+                }
+            }.ignoresSafeArea()
+                .onAppear(perform: {
+                    
+                })
+        }.accentColor(.black)
     }
 }
 
-struct UserProfileView_Preview: PreviewProvider {
-    static var previews: some View {
-        UserProfileView()
-  }
+#Preview {
+    UserProfileView()
 }
