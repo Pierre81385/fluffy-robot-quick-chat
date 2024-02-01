@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
-struct UserDoc: Codable {
-    @DocumentID var email: String?
+struct UserDoc: Codable, Identifiable {
+    var id: String = UUID().uuidString
+    var email: String
     var name: String
 }

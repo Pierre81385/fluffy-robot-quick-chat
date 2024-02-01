@@ -11,7 +11,7 @@ struct UserRegisterView: View {
     @State var verifyPassword: String = "";
     @State var submit: Bool = false
     @State var status: FireAuthStatus = FireAuthStatus(success: false, code: 0, message: "")
-    @ObservedObject private var userModel = UserModel()
+    @ObservedObject private var userModel = UserModel.init(userDocs: [], user: UserDoc(email: "", name: ""), errorMessage: "")
 
     var body: some View {
         
@@ -47,21 +47,16 @@ struct UserRegisterView: View {
                         .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                         .autocorrectionDisabled()
                         Button(action: {
-                            //create Firebase Auth User
+                            let user: UserDoc = UserDoc(email: email, name: name)
+                            userModel.addUser(user: user)
                             let auth = FireAuth(authStatus: $status)
                             auth.CreateUser(username: name, email: email, password: password)
-                            //create Firebase Firestore User document
-                            Task {
-                                await userModel.createUserDocument(name: name, email: email, uid: auth.GetCurrentUser().uid)
-                            }
-                            if (status.success){
-                                submit = true
-                            }
                         }, label: {
                             Text("Submit")
                         }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
-                            .padding()
-                            .navigationDestination(isPresented: $submit, destination: {UserProfileView()})
+                        .padding()
+                        .navigationDestination(isPresented: $status.success, destination: {UserProfileView()})
+
                     
                 }
             }.ignoresSafeArea()

@@ -17,16 +17,17 @@ class UserModel: ObservableObject {
     
     func addUser(user: UserDoc) {
       let collectionRef = db.collection("users")
+        let documentRef = collectionRef.document(user.email)
       do {
-        let newDocReference = try collectionRef.addDocument(from: self.user)
-        print("Book stored with new document reference: \(newDocReference)")
+          try documentRef.setData(from: user)
+          print("User stored with new document ID: \(user.email)")
       }
       catch {
         print(error)
       }
     }
     
-    private func fetchUserDock(documentId: String) {
+     func fetchUserDock(documentId: String) {
       let docRef = db.collection("users").document(documentId)
       
       docRef.getDocument(as: UserDoc.self) { result in
@@ -39,9 +40,8 @@ class UserModel: ObservableObject {
       }
     }
     
-    func updateUser(user: UserDoc) {
-        if let id = user.email {
-        let docRef = db.collection("user").document(id)
+    func updateUser(user: UserDoc, documentId: String) {
+        let docRef = db.collection("user").document(documentId)
         do {
           try docRef.setData(from: user)
         }
@@ -49,7 +49,7 @@ class UserModel: ObservableObject {
           print(error)
         }
       }
-    }
+    
     
     func deleeteUser(documentId: String) async {
         let docRef = db.collection("users").document(documentId)
@@ -61,5 +61,19 @@ class UserModel: ObservableObject {
           print("Error removing document: \(error)")
         }
         
+    }
+    
+    func fetchUserDocs() {
+        db.collection("users")
+            .addSnapshotListener { querySnapshot, error in
+                guard let documents = querySnapshot?.documents else {
+                    print("Error fetching documents: \(error!)")
+                    return
+                }
+                self.userDocs = documents.compactMap { queryDocumentSnapshot -> UserDoc? in
+                    return try? queryDocumentSnapshot.data(as: UserDoc.self)
+                }
+                print("Got all users!)")
+            }
     }
 }

@@ -12,9 +12,9 @@ import FirebaseAuth
 struct UserLoginView: View {
     @State var email: String = "";
     @State var password: String = "";
-    @State var submit: Bool = false
     @State var status: FireAuthStatus = FireAuthStatus(success: false, code: 0, message: "")
-    @ObservedObject private var userModel = UserModel()
+    @State var user: UserDoc = UserDoc(email: "", name: "")
+    @ObservedObject private var userModel = UserModel.init(userDocs: [], user: UserDoc(email: "", name: ""), errorMessage: "")
     
     var body: some View {
         NavigationStack {
@@ -40,19 +40,13 @@ struct UserLoginView: View {
                     
                     HStack {
                         Button(action: {
-                            //sign into Firebase Auth with email and password
                             let auth = FireAuth(authStatus: $status)
                             auth.SignInWithEmailAndPassword(email: email, password: password)
-                            //fetch user
-                            userModel.fetchUserDocumentByEmail(email: email)
-                            for user in userModel.userDocs {
-                                print(user.id)
-                            }
                         }, label: {
                             Text("Submit")
                         }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
                             .padding()
-                            .navigationDestination(isPresented: $submit, destination: {UserProfileView()})
+                            .navigationDestination(isPresented: $status.success, destination: {UserProfileView()})
 
                     }
                     Divider().padding()

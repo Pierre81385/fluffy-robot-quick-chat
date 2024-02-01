@@ -9,7 +9,8 @@ import SwiftUI
 
 struct UsersListView: View {
     
-    @ObservedObject private var userModel = UserModel()
+    @State var user: UserDoc = UserDoc(email: "", name: "")
+    @ObservedObject private var userModel = UserModel.init(userDocs: [], user: UserDoc(email: "", name: ""), errorMessage: "")
     
     var body: some View {
         NavigationView {
@@ -23,7 +24,7 @@ struct UsersListView: View {
             }
         }.navigationTitle("Users")
             .onAppear {
-                userModel.fetchUserDocument()
+                userModel.fetchUserDocs()
             }
     }
 }

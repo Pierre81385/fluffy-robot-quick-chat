@@ -20,29 +20,21 @@ struct FireAuth {
     @Binding var authStatus: FireAuthStatus
     
     func CreateUser(username: String, email: String, password: String) {
-          Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            if error != nil {
-                authStatus.success = false
-                authStatus.code = 500
-                authStatus.message = error?.localizedDescription ?? ""
-            } else {
-                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                changeRequest?.displayName = username
-                changeRequest?.commitChanges { error in
-                    if error != nil {
-                        authStatus.success = false
-                        authStatus.code = 500
-                        authStatus.message = error?.localizedDescription ?? ""
-                    } else {
-                        authStatus.success = true
-                        authStatus.code = 200
-                        authStatus.message = "User created!"
-                    }
-                }
-                
-            }
+          Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+              if error != nil {
+                  authStatus.success = false
+                  authStatus.code = 500
+                  authStatus.message = error?.localizedDescription ?? ""
+                  print("Status \(authStatus.success): \(authStatus.message)")
+              } else {
+                  authStatus.success = true
+                  authStatus.code = 200
+                  authStatus.message = "Successfully signed in!"
+                  print("Status \(authStatus.success): \(authStatus.message)")
+              }
+          }
         }
-    }
+    
     
     func GetCurrentUser() -> User {
         if Auth.auth().currentUser != nil {
