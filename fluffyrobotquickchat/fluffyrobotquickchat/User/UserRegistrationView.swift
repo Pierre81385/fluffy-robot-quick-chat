@@ -47,6 +47,10 @@ struct UserRegisterView: View {
                         .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                         .autocorrectionDisabled()
                         Button(action: {
+                            name = ""
+                            email = ""
+                            password = ""
+                            verifyPassword = ""
                             let user: UserDoc = UserDoc(email: email, name: name)
                             userModel.addUser(user: user)
                             let auth = FireAuth(authStatus: $status)

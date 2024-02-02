@@ -57,7 +57,7 @@ struct UserProfileView: View {
                 }
             }.ignoresSafeArea()
                 .onAppear{
-                    userModel.fetchUserDock(documentId: currentUser!.email ?? "")
+                    userModel.fetchUserDoc(documentId: currentUser!.email ?? "")
                 }
         }.accentColor(.black)
     }

@@ -40,8 +40,12 @@ struct UserLoginView: View {
                     
                     HStack {
                         Button(action: {
+                            
+                            email = "";
+                        password = ""
                             let auth = FireAuth(authStatus: $status)
                             auth.SignInWithEmailAndPassword(email: email, password: password)
+                     
                         }, label: {
                             Text("Submit")
                         }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))

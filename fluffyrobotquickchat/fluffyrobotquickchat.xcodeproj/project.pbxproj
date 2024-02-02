@@ -16,9 +16,10 @@
 		BA43DF9B2B52714A00D845AE /* NeumorphicStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43DF9A2B52714900D845AE /* NeumorphicStyle.swift */; };
 		BA8967762B675B0A00ABF4B5 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8967752B675B0A00ABF4B5 /* UserStruct.swift */; };
 		BA8967782B675DFB00ABF4B5 /* UsersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8967772B675DFA00ABF4B5 /* UsersListView.swift */; };
-		BA89677B2B67618300ABF4B5 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89677A2B67618300ABF4B5 /* ItemViewModel.swift */; };
-		BA89677D2B67619600ABF4B5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89677C2B67619600ABF4B5 /* Item.swift */; };
+		BA89677B2B67618300ABF4B5 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89677A2B67618300ABF4B5 /* ItemModel.swift */; };
+		BA89677D2B67619600ABF4B5 /* ItemStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89677C2B67619600ABF4B5 /* ItemStruct.swift */; };
 		BA8967A92B6876F300ABF4B5 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8967A82B6876F300ABF4B5 /* ItemList.swift */; };
+		BA8967AB2B6D73F800ABF4B5 /* ItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8967AA2B6D73F800ABF4B5 /* ItemBuilder.swift */; };
 		BA90E1CF2B51C5B300729479 /* fluffyrobotquickchatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90E1CE2B51C5B300729479 /* fluffyrobotquickchatApp.swift */; };
 		BA90E1D12B51C5B300729479 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90E1D02B51C5B300729479 /* ContentView.swift */; };
 		BA90E1D52B51C5B400729479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA90E1D42B51C5B400729479 /* Assets.xcassets */; };
@@ -57,9 +58,10 @@
 		BA43DF9A2B52714900D845AE /* NeumorphicStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicStyle.swift; sourceTree = "<group>"; };
 		BA8967752B675B0A00ABF4B5 /* UserStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStruct.swift; sourceTree = "<group>"; };
 		BA8967772B675DFA00ABF4B5 /* UsersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListView.swift; sourceTree = "<group>"; };
-		BA89677A2B67618300ABF4B5 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
-		BA89677C2B67619600ABF4B5 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		BA89677A2B67618300ABF4B5 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		BA89677C2B67619600ABF4B5 /* ItemStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStruct.swift; sourceTree = "<group>"; };
 		BA8967A82B6876F300ABF4B5 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
+		BA8967AA2B6D73F800ABF4B5 /* ItemBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBuilder.swift; sourceTree = "<group>"; };
 		BA90E1CB2B51C5B300729479 /* fluffyrobotquickchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fluffyrobotquickchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA90E1CE2B51C5B300729479 /* fluffyrobotquickchatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fluffyrobotquickchatApp.swift; sourceTree = "<group>"; };
 		BA90E1D02B51C5B300729479 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -125,9 +127,10 @@
 		BA8967792B67616100ABF4B5 /* Item */ = {
 			isa = PBXGroup;
 			children = (
-				BA89677A2B67618300ABF4B5 /* ItemViewModel.swift */,
+				BA89677A2B67618300ABF4B5 /* ItemModel.swift */,
+				BA8967AA2B6D73F800ABF4B5 /* ItemBuilder.swift */,
 				BA8967A82B6876F300ABF4B5 /* ItemList.swift */,
-				BA89677C2B67619600ABF4B5 /* Item.swift */,
+				BA89677C2B67619600ABF4B5 /* ItemStruct.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -291,7 +294,8 @@
 				BA90E1D12B51C5B300729479 /* ContentView.swift in Sources */,
 				BA90E1E12B51C6A200729479 /* UserLoginView.swift in Sources */,
 				BA43DF8F2B51ECDC00D845AE /* DialView.swift in Sources */,
-				BA89677D2B67619600ABF4B5 /* Item.swift in Sources */,
+				BA8967AB2B6D73F800ABF4B5 /* ItemBuilder.swift in Sources */,
+				BA89677D2B67619600ABF4B5 /* ItemStruct.swift in Sources */,
 				BA43DF8D2B51E4C500D845AE /* MyAppDelegate.swift in Sources */,
 				BA43DF992B52638F00D845AE /* LinearGradientExtension.swift in Sources */,
 				BA43DF972B52619A00D845AE /* ViewExtension.swift in Sources */,
@@ -300,7 +304,7 @@
 				BADA8D992B55184C0090C831 /* FirebaseAuth.swift in Sources */,
 				BA90E1CF2B51C5B300729479 /* fluffyrobotquickchatApp.swift in Sources */,
 				BA43DF9B2B52714A00D845AE /* NeumorphicStyle.swift in Sources */,
-				BA89677B2B67618300ABF4B5 /* ItemViewModel.swift in Sources */,
+				BA89677B2B67618300ABF4B5 /* ItemModel.swift in Sources */,
 				BA43DF952B52617400D845AE /* ColorExtension.swift in Sources */,
 				BA8967782B675DFB00ABF4B5 /* UsersListView.swift in Sources */,
 				BA8967762B675B0A00ABF4B5 /* UserStruct.swift in Sources */,

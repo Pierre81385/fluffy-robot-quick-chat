@@ -27,7 +27,7 @@ class UserModel: ObservableObject {
       }
     }
     
-     func fetchUserDock(documentId: String) {
+     func fetchUserDoc(documentId: String) {
       let docRef = db.collection("users").document(documentId)
       
       docRef.getDocument(as: UserDoc.self) { result in
@@ -41,7 +41,7 @@ class UserModel: ObservableObject {
     }
     
     func updateUser(user: UserDoc, documentId: String) {
-        let docRef = db.collection("user").document(documentId)
+        let docRef = db.collection("users").document(documentId)
         do {
           try docRef.setData(from: user)
         }
