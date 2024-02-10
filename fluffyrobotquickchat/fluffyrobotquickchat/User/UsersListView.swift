@@ -16,11 +16,16 @@ struct UsersListView: View {
         NavigationView {
             List(userModel.userDocs) {
                 user in
-                VStack {
-                    Text(user.name)
-                        .font(.headline)
-                    Text(user.email)
-                }
+                NavigationLink(destination: Text("ChatView")) {
+                    VStack {
+                        
+                        Text(user.name)
+                            .font(.headline)
+                        Text(user.email)
+                    }
+                    }
+                .navigationTitle("All Users")
+                
             }
         }.navigationTitle("Users")
             .onAppear {

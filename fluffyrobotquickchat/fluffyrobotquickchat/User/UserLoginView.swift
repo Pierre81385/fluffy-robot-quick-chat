@@ -41,10 +41,10 @@ struct UserLoginView: View {
                     HStack {
                         Button(action: {
                             
-                            email = "";
-                        password = ""
+                       
                             let auth = FireAuth(authStatus: $status)
                             auth.SignInWithEmailAndPassword(email: email, password: password)
+                        
                      
                         }, label: {
                             Text("Submit")
@@ -57,6 +57,7 @@ struct UserLoginView: View {
                     NavigationLink(destination: {UserRegisterView()}, label: {Text("I'm a new user!").foregroundColor(.black)})
                 }
             }.ignoresSafeArea()
+                
         }.accentColor(.black)
             
 

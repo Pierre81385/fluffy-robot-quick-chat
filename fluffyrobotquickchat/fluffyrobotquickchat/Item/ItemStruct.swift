@@ -22,17 +22,6 @@ enum Categories: String, CodingKey, CaseIterable, Identifiable, CustomStringConv
     case none = "none"
 }
 
-enum Restrictions: String, CodingKey, CaseIterable, Identifiable, CustomStringConvertible  {
-    var id: Self { self }
-
-    case veg = "vegetarian"
-    case nuts = "contains nuts"
-    case gluten = "gluten free"
-    case vegan = "vegan"
-    case raw = "raw meat"
-    case none = "none"
-}
-
 struct Item: Codable, Identifiable {
     @DocumentID var id: String? = UUID().uuidString
     var name: String
@@ -41,6 +30,5 @@ struct Item: Codable, Identifiable {
     var quantity: Int
     var price: Double
     var categories: String
-    var dietary: String
     var discount: Double
 }
