@@ -1,22 +1,22 @@
+////
+////  UserDetail.swift
+////  fluffyrobotquickchat
+////
+////  Created by Peter Bishop on 2/5/24.
+////
 //
-//  UserDetail.swift
-//  fluffyrobotquickchat
+//import Foundation
+//import SwiftUI
 //
-//  Created by Peter Bishop on 2/5/24.
-//
-
-import Foundation
-import SwiftUI
-
-struct UserDetail: View {
-    
-    
-    
-    var body: some View {
-        ZStack {
-            VStack {
-                
-            }
-        }
-    }
-}
+//struct UserDetail: View {
+//    
+//    
+//    
+//    var body: some View {
+//        ZStack {
+//            VStack {
+//                
+//            }
+//        }
+//    }
+//}

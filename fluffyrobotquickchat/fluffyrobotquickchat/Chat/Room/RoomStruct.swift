@@ -14,6 +14,5 @@ struct Room: Codable, Identifiable {
     var description: String
     var createdBy: String
     var isPrivate: Bool
-    //var messages: [Message]
-    var users: [UserDoc]
+    var users: [UserProfile]
 }

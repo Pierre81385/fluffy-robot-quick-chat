@@ -41,6 +41,8 @@
 		BA90E1EE2B51D94400729479 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = BA90E1ED2B51D94400729479 /* FirebaseAppCheck */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BA90E1F02B51DCE800729479 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA90E1EF2B51DCE800729479 /* GoogleService-Info.plist */; };
 		BABD4B392B7597C80070F5E3 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABD4B382B7597C80070F5E3 /* ChatView.swift */; };
+		BABD4B3B2B7992BB0070F5E3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABD4B3A2B7992BB0070F5E3 /* Extension.swift */; };
+		BABD4B3F2B7AAFB20070F5E3 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BABD4B3E2B7AAFB20070F5E3 /* FirebaseFirestoreSwift */; };
 		BADA8D762B535D0F0090C831 /* CircularGlowTileComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADA8D752B535D0F0090C831 /* CircularGlowTileComponent.swift */; };
 		BADA8D782B535DA80090C831 /* DialComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADA8D772B535DA80090C831 /* DialComponent.swift */; };
 		BADA8D7C2B54587E0090C831 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = BADA8D7B2B54587E0090C831 /* FirebaseAnalytics */; };
@@ -87,6 +89,7 @@
 		BA90E1E22B51C74000729479 /* UserProfieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfieView.swift; sourceTree = "<group>"; };
 		BA90E1EF2B51DCE800729479 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BABD4B382B7597C80070F5E3 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		BABD4B3A2B7992BB0070F5E3 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		BADA8D752B535D0F0090C831 /* CircularGlowTileComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularGlowTileComponent.swift; sourceTree = "<group>"; };
 		BADA8D772B535DA80090C831 /* DialComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialComponent.swift; sourceTree = "<group>"; };
 		BADA8D942B54A70D0090C831 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -99,6 +102,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BADA8D802B54587E0090C831 /* FirebaseAnalyticsSwift in Frameworks */,
+				BABD4B3F2B7AAFB20070F5E3 /* FirebaseFirestoreSwift in Frameworks */,
 				BADA8D822B54587E0090C831 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				BADA8D7C2B54587E0090C831 /* FirebaseAnalytics in Frameworks */,
 				BA90E1EA2B51D94400729479 /* FirebaseAnalyticsSwift in Frameworks */,
@@ -245,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				BA90E1DE2B51C68800729479 /* UserRegistrationView.swift */,
+				BABD4B3A2B7992BB0070F5E3 /* Extension.swift */,
 				BA8967752B675B0A00ABF4B5 /* UserStruct.swift */,
 				BADA8D942B54A70D0090C831 /* UserModel.swift */,
 				BA8967772B675DFA00ABF4B5 /* UsersListView.swift */,
@@ -288,6 +293,7 @@
 				BADA8D892B54587E0090C831 /* FirebaseAuthCombine-Community */,
 				BADA8D8B2B54587E0090C831 /* FirebaseCrashlytics */,
 				BADA8D8D2B54587E0090C831 /* FirebaseDatabase */,
+				BABD4B3E2B7AAFB20070F5E3 /* FirebaseFirestoreSwift */,
 			);
 			productName = fluffyrobotquickchat;
 			productReference = BA90E1CB2B51C5B300729479 /* fluffyrobotquickchat.app */;
@@ -362,6 +368,7 @@
 				BA90E1DF2B51C68800729479 /* UserRegistrationView.swift in Sources */,
 				BA56FDB32B6DEEFD004AD681 /* RoomListView.swift in Sources */,
 				BADA8D992B55184C0090C831 /* FirebaseAuth.swift in Sources */,
+				BABD4B3B2B7992BB0070F5E3 /* Extension.swift in Sources */,
 				BA90E1CF2B51C5B300729479 /* fluffyrobotquickchatApp.swift in Sources */,
 				BA8967B32B6D9DDE00ABF4B5 /* RoomStruct.swift in Sources */,
 				BA43DF9B2B52714A00D845AE /* NeumorphicStyle.swift in Sources */,
@@ -623,6 +630,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BA90E1E42B51D94400729479 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAppCheck;
+		};
+		BABD4B3E2B7AAFB20070F5E3 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA90E1E42B51D94400729479 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 		BADA8D7B2B54587E0090C831 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

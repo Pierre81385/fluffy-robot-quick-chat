@@ -12,9 +12,7 @@ import FirebaseAuth
 struct UserLoginView: View {
     @State var email: String = "";
     @State var password: String = "";
-    @State var status: FireAuthStatus = FireAuthStatus(success: false, code: 0, message: "")
-    @State var user: UserDoc = UserDoc(email: "", name: "")
-    @ObservedObject private var userModel = UserModel.init(userDocs: [], user: UserDoc(email: "", name: ""), errorMessage: "")
+    @ObservedObject var auth = FireAuth(authStatus: false, authErrorMessage: "")
     
     var body: some View {
         NavigationStack {
@@ -22,8 +20,14 @@ struct UserLoginView: View {
                 Color(Color.offWhite)
                 VStack {
                     HStack {
-                        Text("LOGIN")
-                            .font(.largeTitle)
+                       
+                    
+                            VStack{
+                                Text("LOGIN")
+                                    .font(.largeTitle)
+                                Text(auth.authErrorMessage).tint(.red)
+                            }
+                        
                     }
                     //email
                     TextField("email address", text: $email)
@@ -40,17 +44,12 @@ struct UserLoginView: View {
                     
                     HStack {
                         Button(action: {
-                            
-                       
-                            let auth = FireAuth(authStatus: $status)
                             auth.SignInWithEmailAndPassword(email: email, password: password)
-                        
-                     
                         }, label: {
                             Text("Submit")
                         }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
                             .padding()
-                            .navigationDestination(isPresented: $status.success, destination: {UserProfileView()})
+                            .navigationDestination(isPresented: $auth.authStatus, destination: {LoginEnd(email: $email)})
 
                     }
                     Divider().padding()
@@ -67,3 +66,20 @@ struct UserLoginView: View {
 #Preview {
     UserLoginView()
 }
+
+struct LoginEnd: View {
+
+    var body: some View {
+        VStack {
+            Text("Success!")
+        }
+    }
+}
+                
+                struct LoginError: View {
+                    var body: some View {
+                        VStack {
+                            Text("Error!")
+                        }
+                    }
+                }

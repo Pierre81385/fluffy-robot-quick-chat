@@ -10,27 +10,29 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
 
-struct FireAuthStatus {
-    var success: Bool
-    var code: Int
-    var message: String
-}
+//struct FireAuthStatus {
+//    var success: Bool
+//    var code: Int
+//    var message: String
+//}
 
-struct FireAuth {
-    @Binding var authStatus: FireAuthStatus
+class FireAuth: ObservableObject {
+    @Published var authStatus: Bool
+    @Published var authErrorMessage: String
+    
+    init(authStatus: Bool, authErrorMessage: String) {
+        self.authStatus = authStatus
+        self.authErrorMessage = authErrorMessage
+    }
     
     func CreateUser(username: String, email: String, password: String) {
           Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
               if error != nil {
-                  authStatus.success = false
-                  authStatus.code = 500
-                  authStatus.message = error?.localizedDescription ?? ""
-                  print("Status \(authStatus.success): \(authStatus.message)")
+                  self.authStatus = false
+                  self.authErrorMessage = error?.localizedDescription ?? ""
               } else {
-                  authStatus.success = true
-                  authStatus.code = 200
-                  authStatus.message = "Successfully signed in!"
-                  print("Status \(authStatus.success): \(authStatus.message)")
+                  self.authStatus = true
+                  self.authErrorMessage = "Successfully signed in!"
               }
           }
         }
@@ -38,14 +40,12 @@ struct FireAuth {
     
     func GetCurrentUser() -> User {
         if Auth.auth().currentUser != nil {
-            authStatus.success = true
-            authStatus.code = 200
-            authStatus.message = "Found user uid: \(String(describing: Auth.auth().currentUser?.uid))"
+            self.authStatus = true
+            self.authErrorMessage = "Found user uid: \(String(describing: Auth.auth().currentUser?.uid))"
             return Auth.auth().currentUser!
         } else {
-            authStatus.success = false
-            authStatus.code = 500
-            authStatus.message = "The current user is signed out!"
+            self.authStatus = false
+            self.authErrorMessage = "User not found!"
             return Auth.auth().currentUser!
         }
     }
@@ -54,13 +54,11 @@ struct FireAuth {
         
                Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                    if error != nil {
-                       authStatus.success = false
-                       authStatus.code = 500
-                       authStatus.message = error?.localizedDescription ?? ""
+                       self.authStatus = false
+                       self.authErrorMessage = error?.localizedDescription ?? ""
                    } else {
-                       authStatus.success = true
-                       authStatus.code = 200
-                       authStatus.message = "Successfully signed in!"
+                       self.authStatus = true
+                       self.authErrorMessage = "Successfully signed in!"
                    }
                }
            
@@ -69,13 +67,11 @@ struct FireAuth {
     func SendEmailVerfication(){
         Auth.auth().currentUser?.sendEmailVerification { error in
             if error != nil {
-                authStatus.success = false
-                authStatus.code = 500
-                authStatus.message = error?.localizedDescription ?? ""
+                self.authStatus = false
+                self.authErrorMessage = error?.localizedDescription ?? ""
             } else {
-                authStatus.success = true
-                authStatus.code = 200
-                authStatus.message = "Email verification sent!"
+                self.authStatus = true
+                self.authErrorMessage = "Email verification sent!"
             }
         }
     }
@@ -83,13 +79,11 @@ struct FireAuth {
     func UpdateEmail(email: String) {
         Auth.auth().currentUser?.sendEmailVerification(beforeUpdatingEmail: email) { error in
             if error != nil {
-                authStatus.success = false
-                authStatus.code = 500
-                authStatus.message = error?.localizedDescription ?? ""
+                self.authStatus = false
+                self.authErrorMessage = error?.localizedDescription ?? ""
             } else {
-                authStatus.success = true
-                authStatus.code = 200
-                authStatus.message = "Email updated!"
+                self.authStatus = true
+                self.authErrorMessage = "Email updated!"
             }
         }
     }
@@ -97,13 +91,11 @@ struct FireAuth {
     func UpdatePassword(password: String) {
         Auth.auth().currentUser?.updatePassword(to: password) { error in
             if error != nil {
-                authStatus.success = false
-                authStatus.code = 500
-                authStatus.message = error?.localizedDescription ?? ""
+                self.authStatus = false
+                self.authErrorMessage = error?.localizedDescription ?? ""
             } else {
-                authStatus.success = true
-                authStatus.code = 200
-                authStatus.message = "Password updated!"
+                self.authStatus = true
+                self.authErrorMessage = "Password updated!"
             }
         }
     }
@@ -111,13 +103,11 @@ struct FireAuth {
     func SendPasswordReset(email: String){
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if error != nil {
-                authStatus.success = false
-                authStatus.code = 500
-                authStatus.message = error?.localizedDescription ?? ""
+                self.authStatus = false
+                self.authErrorMessage = error?.localizedDescription ?? ""
             } else {
-                authStatus.success = true
-                authStatus.code = 200
-                authStatus.message = "Password reset sent to \(email)!"
+                self.authStatus = true
+                self.authErrorMessage = "Password reset sent to \(email)!"
             }
         }
     }
@@ -127,13 +117,11 @@ struct FireAuth {
 
         user?.delete { error in
             if error != nil {
-                authStatus.success = false
-                authStatus.code = 500
-                authStatus.message = error?.localizedDescription ?? ""
+                self.authStatus = false
+                self.authErrorMessage = error?.localizedDescription ?? ""
             } else {
-                authStatus.success = true
-                authStatus.code = 200
-                authStatus.message = "User deleted!"
+                self.authStatus = true
+                self.authErrorMessage = "User deleted!"
             }
         }
     }
@@ -142,13 +130,11 @@ struct FireAuth {
         let firebaseAuth = Auth.auth()
         do {
           try firebaseAuth.signOut()
-            authStatus.success = true
-            authStatus.code = 200
-            authStatus.message = "Signed out!"
+            self.authStatus = true
+            self.authErrorMessage = "Signed out!"
         } catch let signOutError as NSError {
-            authStatus.success = false
-            authStatus.code = 500
-            authStatus.message = signOutError.description
+            self.authStatus = false
+            self.authErrorMessage = signOutError.description
         }
     }
 }

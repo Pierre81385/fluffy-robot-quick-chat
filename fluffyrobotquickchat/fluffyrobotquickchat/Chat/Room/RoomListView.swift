@@ -18,7 +18,7 @@ struct RoomListView: View {
                 List(room.rooms) {
                     room in
                    
-                        NavigationLink(destination: ChatView(thisRoom: room)) {
+                        NavigationLink(destination: /*ChatView(thisRoom: room*/ Text("To ChatView")) {
                             VStack {
                                 Text(room.name)
                             }

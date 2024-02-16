@@ -3,77 +3,98 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class UserModel: ObservableObject {
-    @Published var userDocs = [UserDoc]()
-    @Published var user: UserDoc
+    @Published var userProfiles = [UserProfile]()
+    @Published var userProfile: UserProfile
     @Published var errorMessage: String?
+    @Published var successStatus: Bool
     
-    init(userDocs: [UserDoc] = [UserDoc](), user: UserDoc, errorMessage: String) {
-        self.userDocs = userDocs
-        self.user = user
+    init(userProfiles: [UserProfile] = [UserProfile](), userProfile: UserProfile, errorMessage: String, successStatus: Bool) {
+        self.userProfiles = userProfiles
+        self.userProfile = userProfile
         self.errorMessage = errorMessage
+        self.successStatus = successStatus
     }
     
     private var db = Firestore.firestore()
     
-    func addUser(user: UserDoc) {
+    func addUserProfile(userProfile: UserProfile) {
       let collectionRef = db.collection("users")
-        let documentRef = collectionRef.document(user.email)
+        let documentRef = collectionRef.document(userProfile.email)
       do {
-          try documentRef.setData(from: user)
-          print("User stored with new document ID: \(user.email)")
+          try documentRef.setData(from: userProfile)
+          self.errorMessage = "New user profile stored!"
+          self.successStatus = true
+          print("User stored with new document ID: \(userProfile.email)")
       }
       catch {
-        print(error)
+          self.errorMessage = "Error creating document: \(error.localizedDescription)"
+          self.successStatus = false
+          print(error)
       }
     }
     
-     func fetchUserDoc(documentId: String) {
+     func fetchUserProfile(documentId: String) {
       let docRef = db.collection("users").document(documentId)
       
-      docRef.getDocument(as: UserDoc.self) { result in
+      docRef.getDocument(as: UserProfile.self) { result in
         switch result {
-        case .success(let user):
-          self.user = user
+        case .success(let userProfile):
+          self.userProfile = userProfile
+            self.successStatus = true
+            self.errorMessage = "Got user profile!"
         case .failure(let error):
             self.errorMessage = "Error decoding document: \(error.localizedDescription)"
+            self.successStatus = false
         }
       }
     }
     
-    func updateUser(user: UserDoc, documentId: String) {
+    func updateUserProfile(userProfile: UserProfile, documentId: String) {
         let docRef = db.collection("users").document(documentId)
         do {
-          try docRef.setData(from: user)
+          try docRef.setData(from: userProfile)
+            self.successStatus = true
+            self.errorMessage = "Document updated!"
         }
         catch {
-          print(error)
+            self.errorMessage = "Error updating document: \(error.localizedDescription)"
+            self.successStatus = false
+            print(error)
         }
       }
     
     
-    func deleeteUser(documentId: String) async {
+    func deleeteUserProfile(documentId: String) async {
         let docRef = db.collection("users").document(documentId)
         
         do {
           try await docRef.delete()
+            self.successStatus = true
+            self.errorMessage = "Document successfully removed!"
           print("Document successfully removed!")
         } catch {
-          print("Error removing document: \(error)")
+            self.errorMessage = "Error removing document: \(error.localizedDescription)"
+            self.successStatus = false
+            print("Error removing document: \(error)")
         }
         
     }
     
-    func fetchUserDocs() {
+    func fetchUserProfiless() {
         db.collection("users")
             .addSnapshotListener { querySnapshot, error in
                 guard let documents = querySnapshot?.documents else {
+                    self.errorMessage = "Error getting documents: \(error!.localizedDescription)"
+                    self.successStatus = false
                     print("Error fetching documents: \(error!)")
                     return
                 }
-                self.userDocs = documents.compactMap { queryDocumentSnapshot -> UserDoc? in
-                    return try? queryDocumentSnapshot.data(as: UserDoc.self)
+                self.userProfiles = documents.compactMap { queryDocumentSnapshot -> UserProfile? in
+                    return try? queryDocumentSnapshot.data(as: UserProfile.self)
                 }
-                print("Got all users!)")
+                print("Got all user profiles!)")
+                self.successStatus = true
+                self.errorMessage = "Found user profiles!"
             }
     }
 }

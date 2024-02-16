@@ -1,41 +1,41 @@
+////
+////  UsersAllView.swift
+////  fluffyrobotquickchat
+////
+////  Created by Peter Bishop on 1/28/24.
+////
 //
-//  UsersAllView.swift
-//  fluffyrobotquickchat
+//import SwiftUI
 //
-//  Created by Peter Bishop on 1/28/24.
+//struct UsersListView: View {
+//    
+//    @State var user: UserDoc = UserDoc(email: "", name: "")
+//    @ObservedObject private var userModel = UserModel.init(userDocs: [], user: UserDoc(email: "", name: ""), errorMessage: "")
+//    
+//    var body: some View {
+//        NavigationView {
+//            List(userModel.userDocs) {
+//                user in
+//                NavigationLink(destination: Text("ChatView")) {
+//                    VStack {
+//                        
+//                        Text(user.name)
+//                            .font(.headline)
+//                        Text(user.email)
+//                    }
+//                    }
+//                .navigationTitle("All Users")
+//                
+//            }
+//        }.navigationTitle("Users")
+//            .onAppear {
+//                userModel.fetchUserDocs()
+//            }
+//    }
+//}
 //
-
-import SwiftUI
-
-struct UsersListView: View {
-    
-    @State var user: UserDoc = UserDoc(email: "", name: "")
-    @ObservedObject private var userModel = UserModel.init(userDocs: [], user: UserDoc(email: "", name: ""), errorMessage: "")
-    
-    var body: some View {
-        NavigationView {
-            List(userModel.userDocs) {
-                user in
-                NavigationLink(destination: Text("ChatView")) {
-                    VStack {
-                        
-                        Text(user.name)
-                            .font(.headline)
-                        Text(user.email)
-                    }
-                    }
-                .navigationTitle("All Users")
-                
-            }
-        }.navigationTitle("Users")
-            .onAppear {
-                userModel.fetchUserDocs()
-            }
-    }
-}
-
-struct UsersListView_Preview: PreviewProvider {
-    static var previews: some View {
-        UsersListView()
-    }
-}
+//struct UsersListView_Preview: PreviewProvider {
+//    static var previews: some View {
+//        UsersListView()
+//    }
+//}
