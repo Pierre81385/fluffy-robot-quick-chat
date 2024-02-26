@@ -10,14 +10,15 @@ import FirebaseFirestore
 import FirebaseAuth
 
 struct UserLoginView: View {
-    @State var email: String = "";
-    @State var password: String = "";
+    @State var email: String = ""
+    @State var password: String = ""
+    @State var showRegistration: Bool = false
     @ObservedObject var auth = FireAuth(authStatus: false, authErrorMessage: "")
     
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(Color.offWhite)
+                Color(Color.white)
                 VStack {
                     HStack {
                        
@@ -33,7 +34,7 @@ struct UserLoginView: View {
                     TextField("email address", text: $email)
                         .accentColor(.black)
                         .padding()
-                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                        .autocapitalization(.none)
                         .autocorrectionDisabled(true)                    //password
                     SecureField("password", text: $password)
                         .accentColor(.black)
@@ -42,20 +43,34 @@ struct UserLoginView: View {
                         .autocorrectionDisabled(true)
                     //buttons
                     
-                    HStack {
+                    
                         Button(action: {
+                            var lowercase = email.lowercased()
+                            email = lowercase
                             auth.SignInWithEmailAndPassword(email: email, password: password)
                         }, label: {
                             Text("Submit")
                         }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
                             .padding()
-                            .navigationDestination(isPresented: $auth.authStatus, destination: {LoginEnd(email: $email)})
-
-                    }
+                            .navigationDestination(isPresented: $auth.authStatus, destination: {UserMain()})
+                
                     Divider().padding()
-                    NavigationLink(destination: {UserRegisterView()}, label: {Text("I'm a new user!").foregroundColor(.black)})
+                    
+                    Button(action: {
+                        showRegistration = true
+                    }, label: {
+                        Text("Create New account")
+                    }).buttonStyle(NeumorphicButton(shape: RoundedRectangle(cornerRadius: 10)))
+                        .padding()
+                        .navigationDestination(isPresented: $showRegistration, destination: {UserRegisterView()})
+                    
                 }
-            }.ignoresSafeArea()
+            }.onAppear{
+                email = ""
+                password = ""
+                auth.authErrorMessage = ""
+            }
+            .ignoresSafeArea()
                 
         }.accentColor(.black)
             
@@ -76,10 +91,4 @@ struct LoginEnd: View {
     }
 }
                 
-                struct LoginError: View {
-                    var body: some View {
-                        VStack {
-                            Text("Error!")
-                        }
-                    }
-                }
+                

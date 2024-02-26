@@ -9,7 +9,7 @@ enum Onboarding {
 
 struct UserRegisterView: View {
     @State var stage: Onboarding = Onboarding.start
-    @State var profile: UserProfile = UserProfile(email: "", name: "", image: "", birthday: Date(), about: "", role: Role.Owner, friends: [])
+    @State var profile: UserProfile = UserProfile(email: "", name: "", image: "", birthday: Date(), online: false, role: Role.Owner, friends: [])
     @State var password: String = ""
     @State var isReady: Bool = false
 
@@ -17,21 +17,17 @@ struct UserRegisterView: View {
         
             ZStack {
                 switch stage {
-                case Onboarding.name:
-                    OnboardingName(profile: $profile, stage: $stage)
                 case Onboarding.email:
                     OnboardingEmail(profile: $profile, stage: $stage)
-//                case Onboarding.image:
-//                    OnboardingImageUpload(profile: $profile, stage: $stage)
-                case Onboarding.about:
-                    OnboardingAbout(profile: $profile, stage: $stage)
+                case Onboarding.image:
+                    OnboardingImageUpload(profile: $profile, stage: $stage)
                 case Onboarding.age:
                     OnboardingAge(profile: $profile, stage: $stage)
                 case Onboarding.password:
                     OnboardingPassword(password: $password, stage: $stage)
                 case Onboarding.summary:
                     OnboardingSummary(pw: $password, profile: $profile, stage: $stage)
-                default: OnboardingStart(stage: $stage)
+                default: OnboardingName(profile: $profile, stage: $stage)
                 }
             }.ignoresSafeArea()
         }
@@ -50,45 +46,47 @@ struct OnboardingStart: View {
             Button(action: {
                 stage = Onboarding.name
             }, label: {
-                Text("Register a new user profile.")
+                Text("Register")
             })
-        }
+        }.tint(.black)
     }
 }
 
 struct OnboardingName: View {
-    
     @Binding var profile: UserProfile
     @Binding var stage: Onboarding
     
     var body: some View {
-        VStack {
-            ZStack {
-                        Color.white.ignoresSafeArea()
-                        VStack(alignment: .leading) {
-                            Text("Name as you'd like it to appear to other users.").font(.title2).padding()
-                            HStack {
-                                Image(systemName: "pencil")
-                                TextField("", text: $profile.name)
-                            }.underlineTextField()
-                            HStack {
-                                Button(action: {
-                                    stage = Onboarding.start
-                                }, label: {
-                                    Text("Back")
-                                })
-                                Spacer()
-
-                                Button(action: {
-                                    stage = Onboarding.email
-                                }, label: {
-                                    Text("Next")
-                                })
-                            }.padding()
-                        }.padding()
+            VStack {
+                ZStack {
+                    Color.white.ignoresSafeArea()
+                    VStack(alignment: .leading) {
+                        Text("Name as you'd like it to appear to other users.").font(.title2)
+                        HStack {
+                            Image(systemName: "pencil")
+                            TextField("", text: $profile.name)
+                                .accentColor(.black)
+                                .padding()
+                                .autocapitalization(.none)
+                                .autocorrectionDisabled(true)
+                                .underlineTextField()
+                        }
+                        
+                        HStack {
+                           
+                            Spacer()
+                            
+                            Button(action: {
+                                stage = Onboarding.email
+                            }, label: {
+                                Text("Next")
+                            })
+                        }
                     }
-        }.tint(.cyan)
-    }
+                }.padding()
+            }.tint(.black)
+        }
+    
 }
 
 struct OnboardingEmail: View {
@@ -103,9 +101,14 @@ struct OnboardingEmail: View {
                         VStack(alignment: .leading) {
                             Text("What's your email address? (you'll login with this)").font(.title2)
                             HStack {
-                                Image(systemName: "pencil")
-                                TextField("", text: $profile.email).autocorrectionDisabled()
-                            }.underlineTextField()
+                                Image(systemName: "envelope.open.fill")
+                                TextField("", text: $profile.email)
+                                    .accentColor(.black)
+                                    .padding()
+                                    .autocapitalization(.none)
+                                    .autocorrectionDisabled(true)
+                                    .underlineTextField()
+                            }
                             HStack {
                                 Button(action: {
                                     stage = Onboarding.name
@@ -114,14 +117,14 @@ struct OnboardingEmail: View {
                                 })
                                 Spacer()
                                 Button(action: {
-                                    stage = Onboarding.about
+                                    stage = Onboarding.image
                                 }, label: {
                                     Text("Next")
                                 })
                             }
                         }.padding()
                     }
-        }.tint(.teal)
+        }.tint(.black)
     }
 }
 
@@ -141,49 +144,18 @@ struct OnboardingImageUpload: View {
                 })
                 Spacer()
                 Button(action: {
-                    stage = Onboarding.about
+                    stage = Onboarding.age
                 }, label: {
                     Text("Next")
                 })
-            }.tint(.teal)
+            }.tint(.black)
             
             
         }
     }
 }
 
-struct OnboardingAbout: View {
-    @Binding var profile: UserProfile
-    @Binding var stage: Onboarding
 
-    var body: some View {
-        VStack {
-            ZStack {
-                        Color.white.ignoresSafeArea()
-                        VStack(alignment: .leading) {
-                            Text("Want to add a tag line? (a little blurb about yourself)").font(.title2)
-                            HStack {
-                                Image(systemName: "pencil")
-                                TextField("", text: $profile.about)
-                            }.underlineTextField()
-                            HStack {
-                                Button(action: {
-                                    stage = Onboarding.email
-                                }, label: {
-                                    Text("Back")
-                                })
-                                Spacer()
-                                Button(action: {
-                                    stage = Onboarding.age
-                                }, label: {
-                                    Text("Next")
-                                })
-                            }
-                        }.padding()
-                    }
-        }.tint(.teal)
-    }
-}
 
 struct OnboardingAge: View {
     @Binding var profile: UserProfile
@@ -201,7 +173,7 @@ struct OnboardingAge: View {
                                    displayedComponents: [.date]
                                )
                                .datePickerStyle(.graphical)
-                               .tint(.darkPink)
+                               .tint(.black)
                             HStack {
                                 Button(action: {
                                     stage = Onboarding.about
@@ -217,7 +189,7 @@ struct OnboardingAge: View {
                             }
                         }.padding()
                     }
-        }.tint(.teal)
+        }.tint(.black)
     }
 }
 
@@ -234,11 +206,11 @@ struct OnboardingPassword: View {
                             Text("Create a password for your profile!").font(.title2)
                             HStack {
                                 Image(systemName: "pencil")
-                                SecureField("", text: $password)
-                            }.underlineTextField()
+                                SecureField("", text: $password).underlineTextField()
+                            }
                             HStack {
                                 Button(action: {
-                                    stage = Onboarding.about
+                                    stage = Onboarding.age
                                 }, label: {
                                     Text("Back")
                                 })
@@ -251,7 +223,7 @@ struct OnboardingPassword: View {
                             }
                         }.padding()
                     }
-        }.tint(.teal)
+        }.tint(.black)
     }
 }
 
@@ -259,7 +231,7 @@ struct OnboardingSummary: View {
     @Binding var pw: String
     @Binding var profile: UserProfile
     @Binding var stage: Onboarding
-    @ObservedObject private var user = UserModel.init(userProfiles: [], userProfile: UserProfile(email: "", name: "", image: "", birthday: Date(), about: "",role: Role.Owner, friends: []), errorMessage: "", successStatus: false)
+    @ObservedObject private var user = UserModel.init(userProfiles: [], userProfile: UserProfile(email: "", name: "", image: "", birthday: Date(), online: false, role: Role.Owner, friends: []), errorMessage: "", successStatus: false)
     @ObservedObject private var auth = FireAuth(authStatus: false, authErrorMessage: "")
 
     var body: some View {
@@ -268,10 +240,8 @@ struct OnboardingSummary: View {
                 Spacer()
                 Text(profile.name).font(.headline)
                 Text(String(describing: profile.birthday)).font(.subheadline)
-                Text(profile.email).font(.subheadline)
-                Text(profile.about).italic()
+                Text(profile.email).textCase(.lowercase).font(.subheadline)
                 Text("Everything look good?  (You can change anything later.)")
-                    .foregroundColor(.darkPink)
                     .padding()
                 HStack{
                     
@@ -282,6 +252,8 @@ struct OnboardingSummary: View {
                     })
                     Spacer()
                     Button(action: {
+                        var lowercase = profile.email.lowercased()
+                        profile.email = lowercase
                         user.addUserProfile(userProfile: profile)
                         if (user.successStatus) {
                             auth.CreateUser(username: profile.name, email: profile.email, password: pw)
@@ -289,10 +261,10 @@ struct OnboardingSummary: View {
                             print("Error creating user!")
                         }
                     }, label: {
-                        Text("Next")
+                        Text("Submit")
                     })
-                    .navigationDestination(isPresented: $auth.authStatus, destination: { UserLoginView()})
-                }.tint(.teal).padding()
+                    .navigationDestination(isPresented: $auth.authStatus, destination: { UserLoginView().navigationBarBackButtonHidden(true)})
+                }.tint(.black).padding()
                 Spacer()
             }
         }

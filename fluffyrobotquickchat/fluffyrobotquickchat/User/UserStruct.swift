@@ -18,7 +18,7 @@ struct UserProfile: Codable, Identifiable {
     var name: String
     var image: String
     var birthday: Date
-    var about: String
+    var online: Bool
     var role: Role
     var friends: [UserProfile]
 }

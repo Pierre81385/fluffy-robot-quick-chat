@@ -72,7 +72,7 @@ class MessageModel: ObservableObject {
     }
     
     func fetchMessages(documentId: String) {
-        db.collection("rooms").document(documentId).collection("messages")
+        db.collection("rooms").document(documentId).collection("messages").order(by: "sendTime", descending: true)
             .addSnapshotListener { querySnapshot, error in
                 guard let documents = querySnapshot?.documents else {
                     print("Error fetching documents: \(error!)")

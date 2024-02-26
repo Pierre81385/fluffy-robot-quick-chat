@@ -30,20 +30,20 @@ struct Background<S: Shape>: View {
                             .stroke(Color.gray, lineWidth: 3)
                             .blur(radius: 4)
                             .offset(x: 2, y: 2)
-                            .mask(shape.fill(LinearGradient(Color.black, Color.clear)))
+                            .mask(shape.fill(LinearGradient(Color.black.opacity(0.8), Color.clear)))
                     )
                     .overlay(
                         shape
                             .stroke(Color.white, lineWidth: 3)
                             .blur(radius: 4)
                             .offset(x: -2, y: -2)
-                            .mask(shape.fill(LinearGradient(Color.clear, Color.black)))
+                            .mask(shape.fill(LinearGradient(Color.clear, Color.black.opacity(0.8))))
                     )
             } else {
                 shape
-                    .fill(Color.offWhite)
-                    .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-                    .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                    .fill(Color.white)
+                    .shadow(color: Color.black.opacity(0.1), radius: 10, x: 10, y: 10)
+                    .shadow(color: Color.white.opacity(0.8), radius: 10, x: -5, y: -5)
             }
         }
     }

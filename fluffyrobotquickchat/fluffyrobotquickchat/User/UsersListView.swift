@@ -1,39 +1,45 @@
-////
-////  UsersAllView.swift
-////  fluffyrobotquickchat
-////
-////  Created by Peter Bishop on 1/28/24.
-////
 //
-//import SwiftUI
+//  UsersAllView.swift
+//  fluffyrobotquickchat
 //
-//struct UsersListView: View {
-//    
-//    @State var user: UserDoc = UserDoc(email: "", name: "")
-//    @ObservedObject private var userModel = UserModel.init(userDocs: [], user: UserDoc(email: "", name: ""), errorMessage: "")
-//    
-//    var body: some View {
-//        NavigationView {
-//            List(userModel.userDocs) {
-//                user in
-//                NavigationLink(destination: Text("ChatView")) {
-//                    VStack {
-//                        
-//                        Text(user.name)
-//                            .font(.headline)
-//                        Text(user.email)
-//                    }
-//                    }
-//                .navigationTitle("All Users")
-//                
-//            }
-//        }.navigationTitle("Users")
-//            .onAppear {
-//                userModel.fetchUserDocs()
-//            }
-//    }
-//}
+//  Created by Peter Bishop on 1/28/24.
 //
+
+import SwiftUI
+import FirebaseAuth
+
+struct UsersListView: View {
+    
+    var currentUser: User?
+    var userProfiles: [UserProfile]
+    
+    var body: some View {
+        NavigationView {
+            List(userProfiles) {
+                user in
+                if(user.email != currentUser?.email){
+                    VStack {
+                        NavigationLink(destination: Text("ChatView")) {
+                            HStack {
+                                Text(user.name)
+                                    .font(.headline)
+                                Spacer()
+                                if(user.online){
+                                    Image(systemName: "person.fill")
+                                }else{
+                                    Image(systemName: "person.slash")
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
 //struct UsersListView_Preview: PreviewProvider {
 //    static var previews: some View {
 //        UsersListView()
